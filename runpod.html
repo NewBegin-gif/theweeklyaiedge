@@ -28,6 +28,25 @@
         .sidebar-title { font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem; font-weight: 800; }
         .btn-sidebar { display: block; background-color: var(--accent); color: #0f172a; padding: 1rem; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.2s; margin-bottom: 1rem; font-size: 1.05rem; }
         .btn-sidebar:hover { background-color: var(--accent-hover); }
+
+        /* Cross-linking CSS */
+        .related-tools { max-width: 1100px; margin: 2rem auto 4rem; padding: 3rem 1.5rem 0; border-top: 1px solid var(--border); }
+        .related-tools h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2rem; text-align: center; }
+        .related-grid { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        .related-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 2rem; text-align: center; text-decoration: none; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; min-width: 150px; }
+        .related-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .related-icon { width: 48px; height: 48px; border-radius: 10px; object-fit: contain; background: white; padding: 6px; }
+        .related-name { color: var(--text-main); font-size: 0.95rem; font-weight: 600; }
+
+        .network-section { max-width: 1100px; margin: 0 auto 6rem; padding: 0 1.5rem; }
+        .network-section h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2rem; text-align: center; }
+        .network-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .network-card { background: linear-gradient(145deg, #0b121f 0%, #0f172a 100%); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; text-decoration: none; transition: all 0.2s; display: block; }
+        .network-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .network-tag { font-family: monospace; font-size: 0.75rem; color: var(--accent); margin-bottom: 0.8rem; display: block; letter-spacing: 1px; }
+        .network-title { color: #fff; font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem; }
+        .network-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
+
         .footer-strip { background-color: #030712; padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); font-size: 0.85rem; color: #64748b; }
     </style>
 </head>
@@ -50,7 +69,7 @@
             </ul>
             <div class="crosslink-box">
                 <h3>The Edge Perspective</h3>
-                <p>Understanding where the market is going means understanding the infrastructure that powers it. RunPod represents the democratization of AI. You don't need to buy a \$30,000 server rack to experiment with open-source models; you just rent the engine for an hour and get to work.</p>
+                <p>Understanding where the market is going means understanding the infrastructure that powers it. RunPod represents the democratization of AI. You don't need to buy a $30,000 server rack to experiment with open-source models; you just rent the engine for an hour and get to work.</p>
             </div>
         </main>
         <aside class="sticky-sidebar">
@@ -60,6 +79,36 @@
             <div style="font-size: 0.75rem; color: #475569;">Affiliate disclosure · Last updated 2026-06-08</div>
         </aside>
     </div>
+
+    <div class="related-tools">
+        <h3>Explore More on The Weekly AI Edge</h3>
+        <div class="related-grid">
+            <a href="consensus.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=consensus.app&sz=128" class="related-icon" alt="Consensus"><span class="related-name">Consensus</span></a>
+            <a href="mindstudio.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=mindstudio.ai&sz=128" class="related-icon" alt="MindStudio"><span class="related-name">MindStudio</span></a>
+        </div>
+    </div>
+
+    <div class="network-section">
+        <h3>Explore Our Broader Network</h3>
+        <div class="network-grid">
+            <a href="https://aibuildermarketplace.com" target="_blank" class="network-card">
+                <span class="network-tag">THE DIRECTORY</span>
+                <div class="network-title">AI Builder Marketplace &rarr;</div>
+                <div class="network-desc">Our comprehensive directory of B2B software and AI tools.</div>
+            </a>
+            <a href="https://theweekly2pctedge.com" target="_blank" class="network-card">
+                <span class="network-tag">THE HONEST STACK</span>
+                <div class="network-title">The Weekly 2% Edge &rarr;</div>
+                <div class="network-desc">Deep-dive case studies on the specific tools we use to buy back our time.</div>
+            </a>
+            <a href="https://zerotouchsupport.com" target="_blank" class="network-card">
+                <span class="network-tag">CUSTOMER SERVICE</span>
+                <div class="network-title">ZeroTouchSupport &rarr;</div>
+                <div class="network-desc">Smart automation tools for scaling customer support without hiring an army.</div>
+            </a>
+        </div>
+    </div>
+
     <footer class="footer-strip"><div class="footer-strip-left">© 2026 The Weekly AI Edge.</div></footer>
 </body>
 </html>
