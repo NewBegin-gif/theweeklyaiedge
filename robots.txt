@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://theweeklyaiedge.com/sitemap.xml
