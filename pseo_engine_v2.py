@@ -14,8 +14,12 @@ Wat het doet, één artikel per run:
      maar commit/pusht niet (let op: de API-call wordt wél gedaan en kost geld).
 
 Veiligheid:
-  - GEEN hardcoded secrets. De API-key komt uit env ANTHROPIC_API_KEY
-    (zet hem in /root/felix_hq/.env en source die in de cron-wrapper).
+  - GEEN hardcoded secrets. API-key uit de omgeving, in deze volgorde:
+      1. ANTHROPIC_API_KEY  -> rechtstreeks naar de Claude API (anthropic-SDK)
+      2. OPENROUTER_API_KEY of OPENROUTER_KEY -> Claude via OpenRouter
+    (zet de key in /root/felix_hq/.env en source die in de cron-wrapper).
+  - Model via OpenRouter instelbaar met env PSEO_MODEL
+    (default: anthropic/claude-sonnet-4.5 — check openrouter.ai/models voor nieuwere slugs).
   - De GitHub-token wordt uit de remote-URL van de bestaande aibuildermarketplace-
     repo op de VPS gelezen — staat dus nergens in dit (publieke) bestand.
 
@@ -147,29 +151,77 @@ def pick_topic():
     return None
 
 
-def generate(topic):
-    import anthropic
-    client = anthropic.Anthropic()  # leest ANTHROPIC_API_KEY uit de omgeving
-
+def user_message(topic):
     links = "\n".join(f"- {u}" for u in topic["links"])
-    user_msg = (
+    return (
         f"Schrijf het artikel voor slug '{topic['slug']}'.\n"
         f"Werktitel/onderwerp: {topic['onderwerp']}\n"
         f"Invalshoek en aandachtspunten: {topic['invalshoek']}\n"
         f"Toegestane links voor dit artikel (gebruik er 2 à 4, geen andere):\n{links}"
     )
+
+
+def extract_json(text):
+    text = re.sub(r"^```(json)?|```$", "", text.strip(), flags=re.M).strip()
+    start, end = text.find("{"), text.rfind("}")
+    if start == -1 or end <= start:
+        sys.exit("❌ geen JSON in modeloutput — run afgebroken")
+    return json.loads(text[start:end + 1])
+
+
+def generate_anthropic(topic):
+    import anthropic
+    client = anthropic.Anthropic()  # leest ANTHROPIC_API_KEY uit de omgeving
     response = client.messages.create(
         model=MODEL,
         max_tokens=16000,
         thinking={"type": "adaptive"},
         system=SYSTEM_PROMPT,
-        messages=[{"role": "user", "content": user_msg}],
+        messages=[{"role": "user", "content": user_message(topic)}],
         output_config={"format": {"type": "json_schema", "schema": OUTPUT_SCHEMA}},
     )
     text = next(b.text for b in response.content if b.type == "text")
-    usage = response.usage
-    print(f"   tokens: in={usage.input_tokens} uit={usage.output_tokens}")
+    print(f"   tokens: in={response.usage.input_tokens} uit={response.usage.output_tokens}")
     return json.loads(text)
+
+
+def generate_openrouter(topic, key):
+    import requests
+    model = os.environ.get("PSEO_MODEL", "anthropic/claude-sonnet-4.5")
+    json_instructie = (
+        "\n\nAntwoord met UITSLUITEND een JSON-object (geen tekst eromheen, geen markdown) "
+        "met exact deze velden: title (SEO-paginatitel, max 60 tekens, zonder site-suffix), "
+        "meta_description (140-158 tekens), h1, body_html."
+    )
+    r = requests.post(
+        "https://openrouter.ai/api/v1/chat/completions",
+        headers={"Authorization": f"Bearer {key}"},
+        json={
+            "model": model,
+            "messages": [
+                {"role": "system", "content": SYSTEM_PROMPT + json_instructie},
+                {"role": "user", "content": user_message(topic)},
+            ],
+            "max_tokens": 8000,
+        },
+        timeout=300,
+    )
+    if r.status_code != 200:
+        sys.exit(f"❌ OpenRouter {r.status_code}: {r.text[:300]}\n"
+                 f"   (model was '{model}' — ander model? zet PSEO_MODEL, zie openrouter.ai/models)")
+    data = r.json()
+    print(f"   model: {model} | tokens: {data.get('usage', {})}")
+    return extract_json(data["choices"][0]["message"]["content"])
+
+
+def generate(topic):
+    if os.environ.get("ANTHROPIC_API_KEY"):
+        return generate_anthropic(topic)
+    key = os.environ.get("OPENROUTER_API_KEY") or os.environ.get("OPENROUTER_KEY")
+    if key:
+        return generate_openrouter(topic, key)
+    sys.exit("❌ geen API-key gevonden. Zet ANTHROPIC_API_KEY of OPENROUTER_API_KEY "
+             "in /root/felix_hq/.env en source die (set -a; . /root/felix_hq/.env; set +a).")
 
 
 def validate(article, topic):
@@ -317,8 +369,6 @@ def update_sitemap(slug):
 
 def main():
     apply = "--apply" in sys.argv
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        sys.exit("❌ ANTHROPIC_API_KEY niet gezet. Zet hem in /root/felix_hq/.env en source die.")
     import datetime
     date = datetime.date.today().isoformat()
 
