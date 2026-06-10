@@ -1,0 +1,66 @@
+[
+  {
+    "slug": "crypto-bot-bouwen-zonder-programmeren",
+    "onderwerp": "Een crypto-tradingbot bouwen zonder te kunnen programmeren",
+    "invalshoek": "Daans eigen route: van idee op het balkon tot draaiende bot, met de AI-agent van Replit gebouwd en aan de Bitvavo-API gekoppeld. Stap voor stap wat erbij komt kijken (regels bedenken, bouwen met een AI-assistent, klein testen), eerlijk over leergeld en risico's.",
+    "links": ["https://aibuildermarketplace.com/b2b/replit-trading-bot/", "https://aibuildermarketplace.com/b2b/bitvavo-trading-bot/", "https://replit.com/signup?referral=dglhaket", "https://theweekly2pctedge.com"],
+    "sidebar": "replit",
+    "disclaimer": true
+  },
+  {
+    "slug": "wat-kost-een-trading-bot",
+    "onderwerp": "Wat kost het echt om een eigen trading-bot te draaien?",
+    "invalshoek": "Eerlijke kostenposten zonder bedragen te verzinnen: hosting, handelskosten per transactie (dalen bij volume), API-kosten van AI-assistenten tijdens het bouwen, en leergeld. Tegenwicht tegen 'gratis geld'-verhalen.",
+    "links": ["https://aibuildermarketplace.com/b2b/bitvavo-trading-bot/", "https://account.bitvavo.com/create?a=68DCE39715", "https://theweekly2pctedge.com"],
+    "sidebar": "bitvavo",
+    "disclaimer": true
+  },
+  {
+    "slug": "bitvavo-api-uitleg",
+    "onderwerp": "De Bitvavo-API uitgelegd voor niet-programmeurs",
+    "invalshoek": "Wat een exchange-API is, waarom Daan voor Bitvavo koos (EU-gereguleerd, euro), het belang van trade-only API-sleutels zonder opnamerechten, en hoe zijn bot er 24/7 op draait.",
+    "links": ["https://aibuildermarketplace.com/b2b/bitvavo-trading-bot/", "https://account.bitvavo.com/create?a=68DCE39715", "https://aibuildermarketplace.com/b2b/replit-trading-bot/"],
+    "sidebar": "bitvavo",
+    "disclaimer": true
+  },
+  {
+    "slug": "ai-automatisering-eenmanszaak",
+    "onderwerp": "AI-automatisering voor de eenmanszaak: wat werkt echt",
+    "invalshoek": "Hoe Daan als eenpitter een 'bedrijf met meerdere werknemers' simuleert: Victor op de VPS doet content, bots doen de corvee, hij doet strategie en partnerships. Nuchter: begin met één taak die je nooit meer wilt doen.",
+    "links": ["https://aibuildermarketplace.com/b2b/hostinger-vps-review/", "https://www.hostinger.com?REFERRALCODE=UZUDGLHAKW67", "https://aibuildermarketplace.com/b2b/turbotic-ai-review/", "https://aibuildermarketplace.com"],
+    "sidebar": "hostinger",
+    "disclaimer": false
+  },
+  {
+    "slug": "vps-voor-beginners",
+    "onderwerp": "Een VPS voor beginners: je eigen computer in de cloud",
+    "invalshoek": "Wat een VPS is in gewone taal, waarom Daan er zijn hele digitale netwerk op draait, hoe je er zonder Linux-kennis mee start (AI-assistent schrijft de commando's, jij plakt ze), en wanneer shared hosting genoeg is.",
+    "links": ["https://aibuildermarketplace.com/b2b/hostinger-vps-review/", "https://www.hostinger.com?REFERRALCODE=UZUDGLHAKW67"],
+    "sidebar": "hostinger",
+    "disclaimer": false
+  },
+  {
+    "slug": "emotie-grootste-vijand-belegger",
+    "onderwerp": "Waarom emotie de grootste vijand van elke belegger is",
+    "invalshoek": "Daans observaties uit 23 jaar bankenwereld: slimme mensen, domme paniekbeslissingen. Wat een systeem met vaste regels daaraan verandert, en de valkuil van handmatig ingrijpen als het tegenzit.",
+    "links": ["https://aibuildermarketplace.com/b2b/bitvavo-trading-bot/", "https://theweekly2pctedge.com", "https://account.bitvavo.com/create?a=68DCE39715"],
+    "sidebar": "w2e",
+    "disclaimer": true
+  },
+  {
+    "slug": "ai-agent-laten-bouwen-of-zelf-doen",
+    "onderwerp": "Een AI-agent laten bouwen of zelf doen?",
+    "invalshoek": "De afweging uitbesteden vs zelf bouwen met AI-assistenten. Daans ervaring: zelf bouwen is leerzamer, goedkoper op termijn, en je kunt het zelf repareren. Wanneer uitbesteden wél logisch is (geen tijd, eenmalig project).",
+    "links": ["https://aibuildermarketplace.com/b2b/hostinger-vps-review/", "https://aibuildermarketplace.com/b2b/turbotic-ai-review/", "https://aibuildermarketplace.com", "https://www.hostinger.com?REFERRALCODE=UZUDGLHAKW67"],
+    "sidebar": "hostinger",
+    "disclaimer": false
+  },
+  {
+    "slug": "wekelijkse-routine-systematisch-traden",
+    "onderwerp": "Mijn wekelijkse routine als systematische trader",
+    "invalshoek": "Hoe een week eruitziet als je systeem het werk doet: dashboard checken, logs bekijken, af en toe een regel verbeteren, verder leven. Contrast met het daytrader-cliché van schermen staren. Geen resultaten of cijfers noemen.",
+    "links": ["https://theweekly2pctedge.com", "https://aibuildermarketplace.com/b2b/replit-trading-bot/", "https://aibuildermarketplace.com/b2b/bitvavo-trading-bot/"],
+    "sidebar": "w2e",
+    "disclaimer": true
+  }
+]
