@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI + programmatic SEO: hoe mijn content-machine draait | The Weekly AI Edge</title>
+    <style>
+        :root { --bg-dark: #050b14; --bg-card: #0b121f; --text-main: #f8fafc; --text-muted: #94a3b8; --accent: #38bdf8; --accent-hover: #0ea5e9; --border: #1e293b; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.7; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; }
+        .top-bar { background-color: #030712; color: #94a3b8; text-align: center; padding: 0.6rem 1rem; font-size: 0.85rem; border-bottom: 1px solid var(--border); font-weight: 500; }
+        nav { padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; background-color: rgba(5, 11, 20, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
+        .logo { font-size: 1.4rem; font-weight: 800; color: #ffffff; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
+        .logo-dot { color: var(--accent); font-size: 1.2rem; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text-main); }
+        .layout-wrapper { display: grid; grid-template-columns: 1fr 320px; gap: 4rem; max-width: 1100px; margin: 4rem auto; padding: 0 1.5rem; align-items: start; }
+        @media (max-width: 900px) { .layout-wrapper { grid-template-columns: 1fr; gap: 2rem; } .sticky-sidebar { position: static !important; } }
+        h1 { font-size: 2.5rem; margin-bottom: 2rem; color: #fff; line-height: 1.2; font-weight: 800; }
+        h2 { font-size: 1.6rem; margin: 2.5rem 0 1rem; color: #fff; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        p { margin-bottom: 1.25rem; color: var(--text-muted); font-size: 1.1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; color: var(--text-muted); font-size: 1.1rem; }
+        li { margin-bottom: 0.8rem; }
+        strong { color: var(--text-main); }
+        .crosslink-box { background-color: rgba(56, 189, 248, 0.05); border-left: 4px solid var(--accent); padding: 1.5rem; margin: 3rem 0; border-radius: 0 8px 8px 0; }
+        .sticky-sidebar { position: sticky; top: 120px; background-color: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
+        .sidebar-logo { width: 72px; height: 72px; border-radius: 12px; margin-bottom: 1rem; object-fit: contain; background: white; padding: 10px; border: 1px solid var(--border); }
+        .sidebar-title { font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem; font-weight: 800; }
+        .btn-sidebar { display: block; background-color: var(--accent); color: #0f172a; padding: 1rem; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.2s; margin-bottom: 1rem; font-size: 1.05rem; }
+        .btn-sidebar:hover { background-color: var(--accent-hover); }
+
+        /* Cross-linking CSS */
+        .related-tools { max-width: 1100px; margin: 2rem auto 4rem; padding: 3rem 1.5rem 0; border-top: 1px solid var(--border); }
+        .related-tools h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2rem; text-align: center; }
+        .related-grid { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        .related-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 2rem; text-align: center; text-decoration: none; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; min-width: 150px; }
+        .related-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .related-icon { width: 48px; height: 48px; border-radius: 10px; object-fit: contain; background: white; padding: 6px; }
+        .related-name { color: var(--text-main); font-size: 0.95rem; font-weight: 600; }
+
+        .network-section { max-width: 1100px; margin: 0 auto 6rem; padding: 0 1.5rem; }
+        .network-section h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2rem; text-align: center; }
+        .network-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .network-card { background: linear-gradient(145deg, #0b121f 0%, #0f172a 100%); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; text-decoration: none; transition: all 0.2s; display: block; }
+        .network-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .network-tag { font-family: monospace; font-size: 0.75rem; color: var(--accent); margin-bottom: 0.8rem; display: block; letter-spacing: 1px; }
+        .network-title { color: #fff; font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem; }
+        .network-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
+
+        .footer-strip { background-color: #030712; padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); font-size: 0.85rem; color: #64748b; }
+    </style>
+  <link rel="canonical" href="https://theweeklyaiedge.com/ai-p-seo.html">
+  <meta name="description" content="Mijn AI-agent Victor genereert en onderhoudt honderden reviewpagina's in 35 talen — vanaf een VPS, zonder team. De architectuur, de lessen en de valkuilen van AI-pSEO.">
+  <meta property="og:title" content="AI + programmatic SEO: hoe mijn content-machine draait | The Weekly AI Edge">
+  <meta property="og:description" content="Mijn AI-agent Victor genereert en onderhoudt honderden reviewpagina's in 35 talen — vanaf een VPS, zonder team. De architectuur, de lessen en de valkuilen van AI-pSEO.">
+  <meta property="og:url" content="https://theweeklyaiedge.com/ai-p-seo.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CW1KZ258ZV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CW1KZ258ZV');
+  </script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI + programmatic SEO: hoe mijn content-machine draait", "inLanguage": "nl", "mainEntityOfPage": "https://theweeklyaiedge.com/ai-p-seo.html", "datePublished": "2026-06-10", "dateModified": "2026-06-10", "author": {"@type": "Person", "name": "Daan", "url": "https://aibuildermarketplace.com/about/"}, "publisher": {"@type": "Organization", "name": "The Weekly AI Edge"}}</script>
+</head>
+<body>
+    <div class="top-bar">Cutting through the AI hype to find what actually works.</div>
+    <nav>
+        <a href="/" class="logo"><span class="logo-dot">●</span> The Weekly AI Edge</a>
+        <div class="nav-links"><a href="https://aibuildermarketplace.com" target="_blank">Marketplace →</a></div>
+    </nav>
+    <div class="layout-wrapper">
+        <main>
+            <h1>AI + programmatic SEO: hoe mijn content-machine draait</h1>
+            <p>Programmatic SEO — content op schaal genereren voor long-tail zoekopdrachten — heeft een slechte naam, en vaak terecht: het internet stroomt vol met lege AI-pagina's die niemand helpen. Toch draait mijn eigen pSEO-machine al maanden, in 35 talen, grotendeels zonder dat ik ernaar omkijk. Het verschil zit niet in de techniek maar in de uitgangspunten. Dit is hoe de machine werkt — inclusief de lessen die me tijd en geld hebben gekost.</p>
+            <h2>De architectuur in het kort</h2>
+            <ul>
+                <li><strong>Een VPS als thuisbasis.</strong> Alles draait op <a href="https://aibuildermarketplace.com/b2b/hostinger-vps-review/" target="_blank">een Hostinger VPS</a>: mijn agent Victor, de generators, de geplande taken. Geen laptop die aan moet staan, geen afhankelijkheid van mijn aanwezigheid.</li>
+                <li><strong>Generators in plaats van losse pagina's.</strong> Eén template + één databron = honderden consistente pagina's. Pas je het template aan, dan verbetert álles tegelijk.</li>
+                <li><strong>GitHub als ruggengraat.</strong> Victor pusht naar een staging-branch; een uurlijkse controle promoot alleen wat door de checks komt naar de live site. Fouten bereiken de bezoeker zelden.</li>
+                <li><strong>Zelfherstellende taken.</strong> De belangrijkste les: bouw geen scripts die één keer fixen, maar terugkerende taken die élke run controleren en repareren — dubbele koppen, ontbrekende vertalingen, kapotte metadata. De machine onderhoudt zichzelf.</li>
+            </ul>
+            <h2>Wat AI-pSEO laat werken (en wat niet)</h2>
+            <p>Wat niet werkt: kale AI-tekst zonder eigen ervaring of data erin. Google prikt erdoorheen en je lezer ook. Wat wél werkt: programmatische schaal combineren met echte, eerstehands inhoud — mijn reviews zijn gebaseerd op tools die ik zelf gebruik, geschreven vanuit een herkenbare auteur met een echt verhaal. De machine schaalt de distributie; de geloofwaardigheid moet van jou komen. En vergeet de talen niet: dezelfde review in 35 talen aanbieden (met nette hreflang-clusters) was voor mij de grootste onderschatte hefboom.</p>
+            <h2>De eerlijke kosten en valkuilen</h2>
+            <p>Reken op: VPS-kosten (een paar euro per maand), API-kosten voor het taalmodel, en vooral leertijd. Mijn duurste lessen: hardcoded API-sleutels in code die per ongeluk publiek werd (roteer je sleutels, gebruik environment-variabelen), en generators die maandenlang een subtiele fout herhaalden op elke pagina voordat ik het zag. Monitor je output — een machine maakt ook fouten op schaal.</p>
+            <div class="crosslink-box">
+                <h3>The Edge Perspective</h3>
+                <p>De machine is geen doel maar een middel: zij doet de digitale corvee, zodat ik mijn middagen kan afsluiten en bij mijn gezin kan zijn. Wil je zien wat zo'n systeem aan output levert? Kijk op <a href="https://aibuildermarketplace.com" target="_blank">AI Builder Marketplace</a> — volledig door Victor onderhouden. Hoe ik hem bouwde lees je in <a href="ai-agent-kopen.html">het artikel over AI-agents</a>.</p>
+            </div>
+            
+        </main>
+        <aside class="sticky-sidebar">
+            <img src="https://www.google.com/s2/favicons?domain=hostinger.com&sz=128" alt="Hostinger VPS logo" class="sidebar-logo">
+            <div class="sidebar-title">Hostinger VPS</div>
+            <a href="https://www.hostinger.com?REFERRALCODE=UZUDGLHAKW67" target="_blank" class="btn-sidebar" rel="sponsored noopener">Start je eigen VPS →</a>
+            <div style="font-size: 0.75rem; color: #475569;">Affiliate disclosure · Laatst bijgewerkt 2026-06-10</div>
+        </aside>
+    </div>
+
+    <div class="related-tools">
+        <h3>Meer Nederlandstalige gidsen</h3>
+        <div class="related-grid">
+            <a href="algoritmisch-traden.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Wat is algoritmisch traden"><span class="related-name">Wat is algoritmisch traden</span></a>
+            <a href="emotieloos-crypto-traden.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Emotieloos crypto traden"><span class="related-name">Emotieloos crypto traden</span></a>
+            <a href="passief-inkomen-crypto.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Passief inkomen met crypto-systemen"><span class="related-name">Passief inkomen met crypto-systemen</span></a>
+            <a href="prop-firm-bot.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Prop firm bot"><span class="related-name">Prop firm bot</span></a>
+            <a href="ai-agent-kopen.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Een AI-agent kopen"><span class="related-name">Een AI-agent kopen</span></a>
+            <a href="https://aibuildermarketplace.com/b2b/bitvavo-trading-bot/" target="_blank" class="related-card"><img src="https://www.google.com/s2/favicons?domain=bitvavo.com&sz=128" class="related-icon" alt="Bitvavo"><span class="related-name">Bitvavo Review</span></a>
+            <a href="https://aibuildermarketplace.com/b2b/replit-trading-bot/" target="_blank" class="related-card"><img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" class="related-icon" alt="Replit"><span class="related-name">Replit Review</span></a>
+        </div>
+    </div>
+
+    <div class="network-section">
+        <h3>Explore Our Broader Network</h3>
+        <div class="network-grid">
+            <a href="https://aibuildermarketplace.com" target="_blank" class="network-card">
+                <span class="network-tag">THE DIRECTORY</span>
+                <div class="network-title">AI Builder Marketplace &rarr;</div>
+                <div class="network-desc">Our comprehensive directory of B2B software and AI tools.</div>
+            </a>
+            <a href="https://theweekly2pctedge.com" target="_blank" class="network-card">
+                <span class="network-tag">THE HONEST STACK</span>
+                <div class="network-title">The Weekly 2% Edge &rarr;</div>
+                <div class="network-desc">Deep-dive case studies on the specific tools we use to buy back our time.</div>
+            </a>
+            <a href="https://zerotouchsupport.com" target="_blank" class="network-card">
+                <span class="network-tag">CUSTOMER SERVICE</span>
+                <div class="network-title">ZeroTouchSupport &rarr;</div>
+                <div class="network-desc">Smart automation tools for scaling customer support without hiring an army.</div>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer-strip"><div class="footer-strip-left">© 2026 The Weekly AI Edge.</div><p style="font-size:.75rem;opacity:.6;text-align:center;margin:12px 0">Some links are affiliate links — we may earn a commission at no extra cost to you.</p>
+</footer>
+</body>
+</html>

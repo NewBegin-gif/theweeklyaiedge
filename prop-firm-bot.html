@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prop firm bot: kan een algoritme je evaluatie halen? | The Weekly AI Edge</title>
+    <style>
+        :root { --bg-dark: #050b14; --bg-card: #0b121f; --text-main: #f8fafc; --text-muted: #94a3b8; --accent: #38bdf8; --accent-hover: #0ea5e9; --border: #1e293b; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.7; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; }
+        .top-bar { background-color: #030712; color: #94a3b8; text-align: center; padding: 0.6rem 1rem; font-size: 0.85rem; border-bottom: 1px solid var(--border); font-weight: 500; }
+        nav { padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; background-color: rgba(5, 11, 20, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
+        .logo { font-size: 1.4rem; font-weight: 800; color: #ffffff; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
+        .logo-dot { color: var(--accent); font-size: 1.2rem; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text-main); }
+        .layout-wrapper { display: grid; grid-template-columns: 1fr 320px; gap: 4rem; max-width: 1100px; margin: 4rem auto; padding: 0 1.5rem; align-items: start; }
+        @media (max-width: 900px) { .layout-wrapper { grid-template-columns: 1fr; gap: 2rem; } .sticky-sidebar { position: static !important; } }
+        h1 { font-size: 2.5rem; margin-bottom: 2rem; color: #fff; line-height: 1.2; font-weight: 800; }
+        h2 { font-size: 1.6rem; margin: 2.5rem 0 1rem; color: #fff; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        p { margin-bottom: 1.25rem; color: var(--text-muted); font-size: 1.1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; color: var(--text-muted); font-size: 1.1rem; }
+        li { margin-bottom: 0.8rem; }
+        strong { color: var(--text-main); }
+        .crosslink-box { background-color: rgba(56, 189, 248, 0.05); border-left: 4px solid var(--accent); padding: 1.5rem; margin: 3rem 0; border-radius: 0 8px 8px 0; }
+        .sticky-sidebar { position: sticky; top: 120px; background-color: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
+        .sidebar-logo { width: 72px; height: 72px; border-radius: 12px; margin-bottom: 1rem; object-fit: contain; background: white; padding: 10px; border: 1px solid var(--border); }
+        .sidebar-title { font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem; font-weight: 800; }
+        .btn-sidebar { display: block; background-color: var(--accent); color: #0f172a; padding: 1rem; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.2s; margin-bottom: 1rem; font-size: 1.05rem; }
+        .btn-sidebar:hover { background-color: var(--accent-hover); }
+
+        /* Cross-linking CSS */
+        .related-tools { max-width: 1100px; margin: 2rem auto 4rem; padding: 3rem 1.5rem 0; border-top: 1px solid var(--border); }
+        .related-tools h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2rem; text-align: center; }
+        .related-grid { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        .related-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 2rem; text-align: center; text-decoration: none; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; min-width: 150px; }
+        .related-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .related-icon { width: 48px; height: 48px; border-radius: 10px; object-fit: contain; background: white; padding: 6px; }
+        .related-name { color: var(--text-main); font-size: 0.95rem; font-weight: 600; }
+
+        .network-section { max-width: 1100px; margin: 0 auto 6rem; padding: 0 1.5rem; }
+        .network-section h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2rem; text-align: center; }
+        .network-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .network-card { background: linear-gradient(145deg, #0b121f 0%, #0f172a 100%); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; text-decoration: none; transition: all 0.2s; display: block; }
+        .network-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .network-tag { font-family: monospace; font-size: 0.75rem; color: var(--accent); margin-bottom: 0.8rem; display: block; letter-spacing: 1px; }
+        .network-title { color: #fff; font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem; }
+        .network-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
+
+        .footer-strip { background-color: #030712; padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); font-size: 0.85rem; color: #64748b; }
+    </style>
+  <link rel="canonical" href="https://theweeklyaiedge.com/prop-firm-bot.html">
+  <meta name="description" content="Prop firms beloven gefinancierde accounts na een evaluatie. Kan een handelsbot die discipline-test voor je doen? Wat wel kan, wat niet mag, en waar je op moet letten.">
+  <meta property="og:title" content="Prop firm bot: kan een algoritme je evaluatie halen? | The Weekly AI Edge">
+  <meta property="og:description" content="Prop firms beloven gefinancierde accounts na een evaluatie. Kan een handelsbot die discipline-test voor je doen? Wat wel kan, wat niet mag, en waar je op moet letten.">
+  <meta property="og:url" content="https://theweeklyaiedge.com/prop-firm-bot.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CW1KZ258ZV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CW1KZ258ZV');
+  </script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Prop firm bot: kan een algoritme je evaluatie halen?", "inLanguage": "nl", "mainEntityOfPage": "https://theweeklyaiedge.com/prop-firm-bot.html", "datePublished": "2026-06-10", "dateModified": "2026-06-10", "author": {"@type": "Person", "name": "Daan", "url": "https://aibuildermarketplace.com/about/"}, "publisher": {"@type": "Organization", "name": "The Weekly AI Edge"}}</script>
+</head>
+<body>
+    <div class="top-bar">Cutting through the AI hype to find what actually works.</div>
+    <nav>
+        <a href="/" class="logo"><span class="logo-dot">●</span> The Weekly AI Edge</a>
+        <div class="nav-links"><a href="https://aibuildermarketplace.com" target="_blank">Marketplace →</a></div>
+    </nav>
+    <div class="layout-wrapper">
+        <main>
+            <h1>Prop firm bot: kan een algoritme je evaluatie halen?</h1>
+            <p>Prop firms — bedrijven die je na een betaalde evaluatie een "gefinancierd account" geven — zijn enorm populair geworden. Het idee klinkt aantrekkelijk: bewijs dat je gedisciplineerd kunt handelen, en je handelt daarna met hun kapitaal in plaats van het jouwe. En omdat zo'n evaluatie vooral een test van discipline is, duikt steeds vaker de vraag op: kan een bot dat niet veel beter dan ik?</p>
+            <h2>Waarom een algoritme hier in theorie sterk is</h2>
+            <p>Een prop-firm-evaluatie is in essentie een risicobeheer-examen: haal een winstdoel zonder de maximale dagverlies- en totaalverliesgrenzen te raken. Dat is precies waar systematisch handelen in uitblinkt. Een algoritme kent geen wraaktrades na een verlies, vergroot zijn positie niet uit frustratie en stopt gewoon met handelen als de dagrisicolimiet in zicht komt. De eigenschappen die mensen door evaluaties laten zakken — ongeduld, overmoed, paniek — heeft een bot simpelweg niet.</p>
+            <h2>De grote MAAR: lees de regels</h2>
+            <p>Hier moet ik streng zijn, want hier gaat het mis op internet: <strong>veel prop firms verbieden volledig geautomatiseerd handelen</strong>, of staan het alleen toe onder voorwaarden (eigen code wel, gekochte "passing bots" niet — die laatste zijn vrijwel altijd tegen de regels én vaak gewoon oplichterij). Wie betrapt wordt, verliest zijn account en zijn evaluatiegeld. Controleer dus vóór je ook maar iets bouwt de voorwaarden van de specifieke firm, en vraag het bij twijfel schriftelijk na. Een "geheime bot die elke evaluatie haalt" kopen van een onbekende op Telegram is geen strategie, het is een donatie.</p>
+            <h2>De zinvolle route</h2>
+            <ul>
+                <li><strong>Bouw je eigen systeem en begrijp het volledig.</strong> Ik bouwde mijn handelsbot met <a href="https://aibuildermarketplace.com/b2b/replit-trading-bot/" target="_blank">de AI-agent van Replit</a> zonder developer-achtergrond — de drempel is lager dan je denkt.</li>
+                <li><strong>Bewijs je edge eerst op eigen (klein) kapitaal.</strong> Een systeem dat op je eigen rekening geen maanden overleeft, gaat een evaluatie ook niet halen. Ik draai zelf live via <a href="https://aibuildermarketplace.com/b2b/bitvavo-trading-bot/" target="_blank">Bitvavo</a>.</li>
+                <li><strong>Behandel risicolimieten als heilig.</strong> Codeer de evaluatieregels (max dagverlies, max totaalverlies) hard in je systeem — niet als richtlijn maar als noodstop.</li>
+            </ul>
+            <div class="crosslink-box">
+                <h3>The Edge Perspective</h3>
+                <p>Mijn eerlijke kijk: de discipline die je nodig hebt om een evaluatie te halen, is dezelfde discipline die een systeem je oplevert op je eigen rekening — zonder andermans regels en zonder evaluatiekosten. Hoe dat eruitziet, laat ik wekelijks zien op <a href="https://theweekly2pctedge.com" target="_blank">The Weekly 2% Edge</a>.</p>
+            </div>
+            <p style="font-size:.85rem;color:#64748b;border:1px solid var(--border);border-radius:8px;padding:1rem;margin-top:2.5rem"><strong style="color:#94a3b8">Disclaimer:</strong> dit artikel deelt mijn persoonlijke ervaring en is geen financieel advies. Crypto en gehandelde producten zijn risicovol — koersen kunnen hard dalen en een systeem dat in het verleden werkte, biedt geen garantie voor de toekomst. Handel alleen met geld dat je kunt missen.</p>
+        </main>
+        <aside class="sticky-sidebar">
+            <img src="https://www.google.com/s2/favicons?domain=theweekly2pctedge.com&sz=128" alt="The Weekly 2% Edge logo" class="sidebar-logo">
+            <div class="sidebar-title">The Weekly 2% Edge</div>
+            <a href="https://theweekly2pctedge.com" target="_blank" class="btn-sidebar" rel="noopener">Bekijk het live systeem →</a>
+            <div style="font-size: 0.75rem; color: #475569;">Affiliate disclosure · Laatst bijgewerkt 2026-06-10</div>
+        </aside>
+    </div>
+
+    <div class="related-tools">
+        <h3>Meer Nederlandstalige gidsen</h3>
+        <div class="related-grid">
+            <a href="algoritmisch-traden.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Wat is algoritmisch traden"><span class="related-name">Wat is algoritmisch traden</span></a>
+            <a href="emotieloos-crypto-traden.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Emotieloos crypto traden"><span class="related-name">Emotieloos crypto traden</span></a>
+            <a href="passief-inkomen-crypto.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Passief inkomen met crypto-systemen"><span class="related-name">Passief inkomen met crypto-systemen</span></a>
+            <a href="ai-agent-kopen.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Een AI-agent kopen"><span class="related-name">Een AI-agent kopen</span></a>
+            <a href="ai-p-seo.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="AI + programmatic SEO"><span class="related-name">AI + programmatic SEO</span></a>
+            <a href="https://aibuildermarketplace.com/b2b/bitvavo-trading-bot/" target="_blank" class="related-card"><img src="https://www.google.com/s2/favicons?domain=bitvavo.com&sz=128" class="related-icon" alt="Bitvavo"><span class="related-name">Bitvavo Review</span></a>
+            <a href="https://aibuildermarketplace.com/b2b/replit-trading-bot/" target="_blank" class="related-card"><img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" class="related-icon" alt="Replit"><span class="related-name">Replit Review</span></a>
+        </div>
+    </div>
+
+    <div class="network-section">
+        <h3>Explore Our Broader Network</h3>
+        <div class="network-grid">
+            <a href="https://aibuildermarketplace.com" target="_blank" class="network-card">
+                <span class="network-tag">THE DIRECTORY</span>
+                <div class="network-title">AI Builder Marketplace &rarr;</div>
+                <div class="network-desc">Our comprehensive directory of B2B software and AI tools.</div>
+            </a>
+            <a href="https://theweekly2pctedge.com" target="_blank" class="network-card">
+                <span class="network-tag">THE HONEST STACK</span>
+                <div class="network-title">The Weekly 2% Edge &rarr;</div>
+                <div class="network-desc">Deep-dive case studies on the specific tools we use to buy back our time.</div>
+            </a>
+            <a href="https://zerotouchsupport.com" target="_blank" class="network-card">
+                <span class="network-tag">CUSTOMER SERVICE</span>
+                <div class="network-title">ZeroTouchSupport &rarr;</div>
+                <div class="network-desc">Smart automation tools for scaling customer support without hiring an army.</div>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer-strip"><div class="footer-strip-left">© 2026 The Weekly AI Edge.</div><p style="font-size:.75rem;opacity:.6;text-align:center;margin:12px 0">Some links are affiliate links — we may earn a commission at no extra cost to you.</p>
+</footer>
+</body>
+</html>
