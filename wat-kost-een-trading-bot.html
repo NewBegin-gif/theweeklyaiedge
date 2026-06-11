@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wat kost een trading-bot? Mijn eerlijke rekensom uit Saigon | The Weekly AI Edge</title>
+    <style>
+        :root { --bg-dark: #050b14; --bg-card: #0b121f; --text-main: #f8fafc; --text-muted: #94a3b8; --accent: #38bdf8; --accent-hover: #0ea5e9; --border: #1e293b; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.7; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; }
+        .top-bar { background-color: #030712; color: #94a3b8; text-align: center; padding: 0.6rem 1rem; font-size: 0.85rem; border-bottom: 1px solid var(--border); font-weight: 500; }
+        nav { padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; background-color: rgba(5, 11, 20, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
+        .logo { font-size: 1.4rem; font-weight: 800; color: #ffffff; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
+        .logo-dot { color: var(--accent); font-size: 1.2rem; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text-main); }
+        .layout-wrapper { display: grid; grid-template-columns: 1fr 320px; gap: 4rem; max-width: 1100px; margin: 4rem auto; padding: 0 1.5rem; align-items: start; }
+        @media (max-width: 900px) { .layout-wrapper { grid-template-columns: 1fr; gap: 2rem; } .sticky-sidebar { position: static !important; } }
+        h1 { font-size: 2.5rem; margin-bottom: 2rem; color: #fff; line-height: 1.2; font-weight: 800; }
+        h2 { font-size: 1.6rem; margin: 2.5rem 0 1rem; color: #fff; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        p { margin-bottom: 1.25rem; color: var(--text-muted); font-size: 1.1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; color: var(--text-muted); font-size: 1.1rem; }
+        li { margin-bottom: 0.8rem; }
+        strong { color: var(--text-main); }
+        .crosslink-box { background-color: rgba(56, 189, 248, 0.05); border-left: 4px solid var(--accent); padding: 1.5rem; margin: 3rem 0; border-radius: 0 8px 8px 0; }
+        .sticky-sidebar { position: sticky; top: 120px; background-color: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
+        .sidebar-logo { width: 72px; height: 72px; border-radius: 12px; margin-bottom: 1rem; object-fit: contain; background: white; padding: 10px; border: 1px solid var(--border); }
+        .sidebar-title { font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem; font-weight: 800; }
+        .btn-sidebar { display: block; background-color: var(--accent); color: #0f172a; padding: 1rem; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.2s; margin-bottom: 1rem; font-size: 1.05rem; }
+        .btn-sidebar:hover { background-color: var(--accent-hover); }
+
+        /* Cross-linking CSS */
+        .related-tools { max-width: 1100px; margin: 2rem auto 4rem; padding: 3rem 1.5rem 0; border-top: 1px solid var(--border); }
+        .related-tools h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2rem; text-align: center; }
+        .related-grid { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        .related-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 2rem; text-align: center; text-decoration: none; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; min-width: 150px; }
+        .related-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .related-icon { width: 48px; height: 48px; border-radius: 10px; object-fit: contain; background: white; padding: 6px; }
+        .related-name { color: var(--text-main); font-size: 0.95rem; font-weight: 600; }
+
+        .network-section { max-width: 1100px; margin: 0 auto 6rem; padding: 0 1.5rem; }
+        .network-section h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2rem; text-align: center; }
+        .network-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .network-card { background: linear-gradient(145deg, #0b121f 0%, #0f172a 100%); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; text-decoration: none; transition: all 0.2s; display: block; }
+        .network-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .network-tag { font-family: monospace; font-size: 0.75rem; color: var(--accent); margin-bottom: 0.8rem; display: block; letter-spacing: 1px; }
+        .network-title { color: #fff; font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem; }
+        .network-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
+
+        .footer-strip { background-color: #030712; padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); font-size: 0.85rem; color: #64748b; }
+    </style>
+  <link rel="canonical" href="https://theweeklyaiedge.com/wat-kost-een-trading-bot.html">
+  <meta name="description" content="Hosting, transactiekosten, API-gebruik en leergeld: de echte kostenposten van mijn crypto-tradingbot. Zonder verzinsels, wel met kantjes.">
+  <meta property="og:title" content="Wat kost een trading-bot? Mijn eerlijke rekensom uit Saigon | The Weekly AI Edge">
+  <meta property="og:description" content="Hosting, transactiekosten, API-gebruik en leergeld: de echte kostenposten van mijn crypto-tradingbot. Zonder verzinsels, wel met kantjes.">
+  <meta property="og:url" content="https://theweeklyaiedge.com/wat-kost-een-trading-bot.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CW1KZ258ZV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CW1KZ258ZV');
+  </script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Wat kost het echt om een eigen trading-bot te draaien?", "inLanguage": "nl", "mainEntityOfPage": "https://theweeklyaiedge.com/wat-kost-een-trading-bot.html", "datePublished": "2026-06-11", "dateModified": "2026-06-11", "author": {"@type": "Person", "name": "Daan", "url": "https://aibuildermarketplace.com/about/"}, "publisher": {"@type": "Organization", "name": "The Weekly AI Edge"}}</script>
+</head>
+<body>
+    <div class="top-bar">Cutting through the AI hype to find what actually works.</div>
+    <nav>
+        <a href="/" class="logo"><span class="logo-dot">●</span> The Weekly AI Edge</a>
+        <div class="nav-links"><a href="https://aibuildermarketplace.com" target="_blank">Marketplace →</a></div>
+    </nav>
+    <div class="layout-wrapper">
+        <main>
+            <h1>Wat kost het echt om een eigen trading-bot te draaien?</h1>
+            <p>Toen ik mijn eerste crypto-tradingbot in elkaar knutselde met de AI-agent van Replit, kreeg ik één vraag het vaakst: "Wat kost zoiets eigenlijk?" Logisch, want het internet barst van de verhalen over passief inkomen en gratis automatisering. De waarheid is genuanceerder, en dat snap ik pas echt nu ik al maanden met <a href="https://theweekly2pctedge.com" rel="noopener" target="_blank">mijn eigen systeem</a> live draai op Bitvavo.</p><p>Wat ik hieronder deel zijn mijn eigen kostenposten, zonder verzinsels. Ik zeg er meteen bij: dit is geen financieel advies, en het zijn geen beloftes over winst. Wel een eerlijke rekensom van iemand die zijn vrije tijd liever aan zijn gezin in Saigon besteedt dan aan spreadsheets.</p><h2>Hosting: waar draait je bot eigenlijk?</h2><p>Een trading-bot moet 24/7 online zijn, want markten slapen niet. In mijn geval draait mijn systeem op een VPS bij Hostinger, dezelfde machine waar ook mijn AI-agent Victor woont die mijn websites onderhoudt. De kosten van zo'n VPS variëren per aanbieder en configuratie, maar de essentie is: je hebt een stabiele omgeving nodig met minimale downtime. Replit biedt gratis tiers, maar zodra je continu wilt draaien zonder onderbrekingen kom je uit op een betaalde variant of juist een externe server.</p><p>Let op: je bot moet betrouwbaar zijn. Een gemiste order door een serverprobleem kan duurder uitpakken dan een maand hostingkosten. Ik heb dat zelf meegemaakt in week één, toen mijn dashboard plots geen data meer liet zien omdat ik een firewall-regel had gemist.</p><h2>Handelskosten per transactie</h2><p>Hier zit de grootste variabele. Elke keer dat je bot een order plaatst op een exchange zoals <a href="https://account.bitvavo.com/create?a=68DCE39715" rel="sponsored noopener" target="_blank">Bitvavo</a>, betaal je transactiekosten. Die dalen vaak naarmate je meer volume draait, maar in het begin betaal je het basistarief. Dat lijkt weinig per trade, maar als je bot actief is en bijvoorbeeld dagelijks orders plaatst, tellen die kosten op.</p><p>Mijn bot handelt EUR/BTC en volgt een wekelijks systeem met vaste percentages. Dat betekent minder transacties dan een high-frequency strategie, maar ik voel de kosten wel in mijn rendement. De truc is: je winstmarge moet die transactiekosten ruim kunnen dekken, anders vreet de exchange je winst op. Daar spreekt niemand graag over, maar het is een harde realiteit.</p><h2>AI-kosten tijdens het bouwen</h2><p>Ik had geen developer-achtergrond toen ik begon. De AI-agent van Replit hielp me de code te schrijven, maar dat betekende ook: veel iteraties, veel prompts, veel debuggen. Sommige AI-assistenten rekenen per token of per sessie. Replit zelf heeft limieten op de gratis tier, en zodra je serieus aan de slag gaat met een eigen bot, loop je tegen die plafonds aan.</p><p>Ik heb niet precies bijgehouden hoeveel ik in die fase heb uitgegeven, maar het was zeker niet nul. Het voelde als een investering in kennis: elke foutmelding, elke gecrashte run, elke API-verbindingsfout was leergeld. Dat hoort erbij, maar het is geen gratis avontuur.</p><h2>Leergeld en de echte prijs van ervaring</h2><p>De grootste kostenpost staat niet op een factuur: tijd en mentale energie. Ik heb weken besteed aan het debuggen van mijn <a href="https://aibuildermarketplace.com/b2b/bitvavo-trading-bot/" rel="noopener" target="_blank">Bitvavo-koppeling</a>, aan het opzetten van een dashboard dat real-time data toont, aan het finetunen van mijn strategie. Elke keer dat de bot iets deed wat ik niet had voorzien, kostte dat avonden die ik eigenlijk met mijn vrouw en kinderen wilde doorbrengen.</p><p>En dan zijn er nog de emotionele kosten. De eerste keer dat mijn bot een verliesgevende trade maakte, voelde dat persoonlijker dan een handmatige fout. Je hebt iets gebouwd, het draait autonoom, en toch blijf je verantwoordelijk. Dat is geen geldelijke post, maar het weegt zwaar.</p><div class="crosslink-box"><h3>The Edge Perspective</h3><p>Ik bouw geen bots omdat het goedkoop is, maar omdat het me tijd teruggeeft. De kosten — hosting, transacties, AI-tokens, leergeld — zijn reëel, en ik verzwijg ze niet. Maar voor mij is de balans positief: mijn systeem draait nu met minimaal handwerk, en ik kan mijn zondagen weer aan mijn gezin besteden in plaats van aan spreadsheets. Dat is de echte ROI.</p></div><p>Wil je zelf beginnen? Reken dan niet op gratis automatisering. Reken op een leercurve, op kostenposten die je moet inpassen in je strategie, en op momenten waarop je jezelf afvraagt of het de moeite waard is. Voor mij was het dat, maar alleen omdat ik vanaf het begin eerlijk ben geweest over wat het kost — in euro's én in energie.</p>
+            <p style="font-size:.85rem;color:#64748b;border:1px solid var(--border);border-radius:8px;padding:1rem;margin-top:2.5rem"><strong style="color:#94a3b8">Disclaimer:</strong> dit artikel deelt mijn persoonlijke ervaring en is geen financieel advies. Crypto en gehandelde producten zijn risicovol — koersen kunnen hard dalen en een systeem dat in het verleden werkte, biedt geen garantie voor de toekomst. Handel alleen met geld dat je kunt missen.</p>
+        </main>
+        <aside class="sticky-sidebar">
+            <img src="https://www.google.com/s2/favicons?domain=bitvavo.com&sz=128" alt="Bitvavo logo" class="sidebar-logo">
+            <div class="sidebar-title">Bitvavo</div>
+            <a href="https://account.bitvavo.com/create?a=68DCE39715" target="_blank" class="btn-sidebar" rel="sponsored noopener">Open een Bitvavo-account →</a>
+            <div style="font-size: 0.75rem; color: #475569;">Affiliate disclosure · Laatst bijgewerkt 2026-06-11</div>
+        </aside>
+    </div>
+
+    <div class="related-tools">
+        <h3>Meer Nederlandstalige gidsen</h3>
+        <div class="related-grid">
+            <a href="ai-agent-kopen.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Een AI-agent kopen"><span class="related-name">Een AI-agent kopen</span></a>
+            <a href="ai-p-seo.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="AI + programmatic SEO"><span class="related-name">AI + programmatic SEO</span></a>
+            <a href="algoritmisch-traden.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Wat is algoritmisch traden"><span class="related-name">Wat is algoritmisch traden</span></a>
+            <a href="crypto-bot-bouwen-zonder-programmeren.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Een crypto-tradingbot bouwen zonder te kunnen programmeren"><span class="related-name">Een crypto-tradingbot bouwen zonder te kunnen programmeren</span></a>
+            <a href="emotieloos-crypto-traden.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Emotieloos crypto traden"><span class="related-name">Emotieloos crypto traden</span></a>
+            <a href="passief-inkomen-crypto.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Passief inkomen met crypto-systemen"><span class="related-name">Passief inkomen met crypto-systemen</span></a>
+            <a href="prop-firm-bot.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Prop firm bot"><span class="related-name">Prop firm bot</span></a>
+        </div>
+    </div>
+
+    <div class="network-section">
+        <h3>Explore Our Broader Network</h3>
+        <div class="network-grid">
+            <a href="https://aibuildermarketplace.com" target="_blank" class="network-card">
+                <span class="network-tag">THE DIRECTORY</span>
+                <div class="network-title">AI Builder Marketplace &rarr;</div>
+                <div class="network-desc">Our comprehensive directory of B2B software and AI tools.</div>
+            </a>
+            <a href="https://theweekly2pctedge.com" target="_blank" class="network-card">
+                <span class="network-tag">THE HONEST STACK</span>
+                <div class="network-title">The Weekly 2% Edge &rarr;</div>
+                <div class="network-desc">Deep-dive case studies on the specific tools we use to buy back our time.</div>
+            </a>
+            <a href="https://zerotouchsupport.com" target="_blank" class="network-card">
+                <span class="network-tag">CUSTOMER SERVICE</span>
+                <div class="network-title">ZeroTouchSupport &rarr;</div>
+                <div class="network-desc">Smart automation tools for scaling customer support without hiring an army.</div>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer-strip"><div class="footer-strip-left">© 2026 The Weekly AI Edge.</div><p style="font-size:.75rem;opacity:.6;text-align:center;margin:12px 0">Some links are affiliate links — we may earn a commission at no extra cost to you.</p>
+</footer>
+</body>
+</html>
