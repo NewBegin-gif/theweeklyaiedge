@@ -1,0 +1,16 @@
+# The Weekly AI Edge
+
+> Daan's personal hub: cutting through AI hype, with hands-on reviews and Dutch-language guides on systematic trading and AI automation. Last updated 2026-06-12.
+
+Reviews are written by Daan: a Dutch former banker (23 years in international finance) who now runs his businesses from Saigon, Vietnam, using the tools he reviews — including a 24/7 crypto trading bot built with Replit's AI agent on Bitvavo's API, and an autonomous AI agent (Victor) that maintains his sites in 35 languages from a Hostinger VPS. Hands-on reviews reflect real, personal use.
+
+## English reviews
+- [RunPod review](https://theweeklyaiedge.com/runpod.html)
+- [MindStudio review](https://theweeklyaiedge.com/mindstudio.html)
+- [Consensus review](https://theweeklyaiedge.com/consensus.html)
+## Nederlandstalige gidsen (Dutch guides)
+- [Wat is algoritmisch traden?](https://theweeklyaiedge.com/algoritmisch-traden.html): uitleg van een ex-bankier
+- [Emotieloos crypto traden](https://theweeklyaiedge.com/emotieloos-crypto-traden.html)
+- [Passief inkomen met crypto-systemen](https://theweeklyaiedge.com/passief-inkomen-crypto.html): de eerlijke versie
+- [Een AI-agent kopen?](https://theweeklyaiedge.com/ai-agent-kopen.html)
+- [AI + programmatic SEO](https://theweeklyaiedge.com/ai-p-seo.html): hoe de content-machine draait
