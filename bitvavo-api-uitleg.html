@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitvavo API uitgelegd: Waarom ik als niet-programmeur hiervoor koos | The Weekly AI Edge</title>
+    <style>
+        :root { --bg-dark: #050b14; --bg-card: #0b121f; --text-main: #f8fafc; --text-muted: #94a3b8; --accent: #38bdf8; --accent-hover: #0ea5e9; --border: #1e293b; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.7; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; }
+        .top-bar { background-color: #030712; color: #94a3b8; text-align: center; padding: 0.6rem 1rem; font-size: 0.85rem; border-bottom: 1px solid var(--border); font-weight: 500; }
+        nav { padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; background-color: rgba(5, 11, 20, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
+        .logo { font-size: 1.4rem; font-weight: 800; color: #ffffff; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
+        .logo-dot { color: var(--accent); font-size: 1.2rem; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text-main); }
+        .layout-wrapper { display: grid; grid-template-columns: 1fr 320px; gap: 4rem; max-width: 1100px; margin: 4rem auto; padding: 0 1.5rem; align-items: start; }
+        @media (max-width: 900px) { .layout-wrapper { grid-template-columns: 1fr; gap: 2rem; } .sticky-sidebar { position: static !important; } }
+        h1 { font-size: 2.5rem; margin-bottom: 2rem; color: #fff; line-height: 1.2; font-weight: 800; }
+        h2 { font-size: 1.6rem; margin: 2.5rem 0 1rem; color: #fff; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        p { margin-bottom: 1.25rem; color: var(--text-muted); font-size: 1.1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; color: var(--text-muted); font-size: 1.1rem; }
+        li { margin-bottom: 0.8rem; }
+        strong { color: var(--text-main); }
+        .crosslink-box { background-color: rgba(56, 189, 248, 0.05); border-left: 4px solid var(--accent); padding: 1.5rem; margin: 3rem 0; border-radius: 0 8px 8px 0; }
+        .sticky-sidebar { position: sticky; top: 120px; background-color: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
+        .sidebar-logo { width: 72px; height: 72px; border-radius: 12px; margin-bottom: 1rem; object-fit: contain; background: white; padding: 10px; border: 1px solid var(--border); }
+        .sidebar-title { font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem; font-weight: 800; }
+        .btn-sidebar { display: block; background-color: var(--accent); color: #0f172a; padding: 1rem; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.2s; margin-bottom: 1rem; font-size: 1.05rem; }
+        .btn-sidebar:hover { background-color: var(--accent-hover); }
+
+        /* Cross-linking CSS */
+        .related-tools { max-width: 1100px; margin: 2rem auto 4rem; padding: 3rem 1.5rem 0; border-top: 1px solid var(--border); }
+        .related-tools h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2rem; text-align: center; }
+        .related-grid { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        .related-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 2rem; text-align: center; text-decoration: none; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; min-width: 150px; }
+        .related-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .related-icon { width: 48px; height: 48px; border-radius: 10px; object-fit: contain; background: white; padding: 6px; }
+        .related-name { color: var(--text-main); font-size: 0.95rem; font-weight: 600; }
+
+        .network-section { max-width: 1100px; margin: 0 auto 6rem; padding: 0 1.5rem; }
+        .network-section h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2rem; text-align: center; }
+        .network-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .network-card { background: linear-gradient(145deg, #0b121f 0%, #0f172a 100%); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; text-decoration: none; transition: all 0.2s; display: block; }
+        .network-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .network-tag { font-family: monospace; font-size: 0.75rem; color: var(--accent); margin-bottom: 0.8rem; display: block; letter-spacing: 1px; }
+        .network-title { color: #fff; font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem; }
+        .network-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
+
+        .footer-strip { background-color: #030712; padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); font-size: 0.85rem; color: #64748b; }
+    </style>
+  <link rel="canonical" href="https://theweeklyaiedge.com/bitvavo-api-uitleg.html">
+  <meta name="description" content="Hoe de Bitvavo API werkt en waarom ik als ex-banker zonder code-achtergrond juist deze Nederlandse exchange koos voor mijn 24/7 tradingbot. Praktische uitleg.">
+  <meta property="og:title" content="Bitvavo API uitgelegd: Waarom ik als niet-programmeur hiervoor koos | The Weekly AI Edge">
+  <meta property="og:description" content="Hoe de Bitvavo API werkt en waarom ik als ex-banker zonder code-achtergrond juist deze Nederlandse exchange koos voor mijn 24/7 tradingbot. Praktische uitleg.">
+  <meta property="og:url" content="https://theweeklyaiedge.com/bitvavo-api-uitleg.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CW1KZ258ZV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CW1KZ258ZV');
+  </script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "De Bitvavo-API uitgelegd voor niet-programmeurs", "inLanguage": "nl", "mainEntityOfPage": "https://theweeklyaiedge.com/bitvavo-api-uitleg.html", "datePublished": "2026-06-12", "dateModified": "2026-06-12", "author": {"@type": "Person", "name": "Daan", "url": "https://aibuildermarketplace.com/about/"}, "publisher": {"@type": "Organization", "name": "The Weekly AI Edge"}}</script>
+</head>
+<body>
+    <div class="top-bar">Cutting through the AI hype to find what actually works.</div>
+    <nav>
+        <a href="/" class="logo"><span class="logo-dot">●</span> The Weekly AI Edge</a>
+        <div class="nav-links"><a href="https://aibuildermarketplace.com" target="_blank">Marketplace →</a></div>
+    </nav>
+    <div class="layout-wrapper">
+        <main>
+            <h1>De Bitvavo-API uitgelegd voor niet-programmeurs</h1>
+            <p>Toen ik besloot een <a href="https://aibuildermarketplace.com/b2b/bitvavo-trading-bot/" rel="noopener" target="_blank">tradingbot te bouwen</a> zonder enige developer-achtergrond, stuitte ik meteen op een jungle aan begrippen. API's, REST-endpoints, webhook-payloads. Voor iemand die 23 jaar in de bankenwereld werkte met Bloomberg-terminals en Excel, voelde dat als een vreemde taal. Toch bleek het minder ingewikkeld dan ik dacht, zolang je begrijpt wat een exchange-API doét en waarom sommige platforms beter passen bij jouw situatie dan andere.</p>
+
+<h2>Wat is een exchange-API eigenlijk?</h2>
+<p>Een API – Application Programming Interface – is simpelweg een tussenpersoon die jouw software toestaat om met een crypto-exchange te praten. In plaats van handmatig in te loggen, op knoppen te klikken en orders te plaatsen, stuurt jouw bot opdrachten via die API: "Koop 0,01 BTC tegen marktprijs", "Haal mijn huidige saldo op", "Annuleer die lopende order". De exchange begrijpt die opdrachten, voert ze uit en stuurt een bevestiging terug. Zo kan een bot 24 uur per dag, zeven dagen per week handelen zonder dat jij wakker hoeft te blijven.</p>
+<p>Alle grote exchanges – Binance, Kraken, Coinbase, Bitvavo – bieden zo'n API aan. Het verschil zit in de documentatie, de snelheid, de kosten en vooral in de <em>veiligheid</em> van hoe je die toegang configureert. Dat laatste punt was voor mij doorslaggevend.</p>
+
+<h2>Waarom ik Bitvavo koos boven alternatieven</h2>
+<p>Mijn situatie: ik woon in Vietnam, maar ben Nederlander. Ik wilde handelen in euro, niet in USD of USDT, omdat dat scheelt in conversiekosten en administratie. Bitvavo is een Nederlandse exchange, gereguleerd door De Nederlandsche Bank, en werkt direct met SEPA-overschrijvingen. Dat gaf me meer vertrouwen dan een platform zonder Europese vergunning.</p>
+<p>Daarnaast is de <a href="https://account.bitvavo.com/create?a=68DCE39715" rel="sponsored noopener" target="_blank">API-documentatie van Bitvavo</a> gewoon begrijpelijk. Geen cryptische jargon, geen onduidelijke rate-limits die je account plotseling blokkeren. Ik kon binnen een uur testen met demo-keys, zien hoe orders werken en begrijpen welke foutmeldingen ik terug kreeg. Voor iemand zonder programmeerachtergrond is dat goud waard.</p>
+
+<h2>Het verschil tussen read-only en trade-only API-sleutels</h2>
+<p>Hier wordt het belangrijk. Wanneer je een API-sleutel aanmaakt, kun je rechten toekennen: <strong>read-only</strong> (alleen balans en ordergeschiedenis opvragen), <strong>trade</strong> (orders plaatsen en annuleren) en <strong>withdraw</strong> (geld opnemen naar een extern adres). Die laatste optie – withdraw – heb ik <em>nooit</em> aangezet. Waarom? Omdat als een aanvaller toegang krijgt tot mijn bot of mijn VPS, hij dan wel orders kan plaatsen maar nooit mijn euro's of bitcoin naar zijn eigen wallet kan sturen.</p>
+<p>Mijn <a href="https://aibuildermarketplace.com/b2b/replit-trading-bot/" rel="noopener" target="_blank">bot draait op Replit</a> (de AI-agent schreef de code) en het dashboard op een Hostinger VPS. Beide omgevingen zijn redelijk veilig, maar ik ga niet het risico nemen dat één fout in de code of één gelekte environment-variabele leidt tot een leeggeplunderde exchange-account. Trade-only keys zijn de standaard die ik iedereen aanraad.</p>
+
+<div class="crosslink-box"><h3>The Edge Perspective</h3><p>Ik ben geen programmeur. Ik heb nooit informatica gestudeerd. Maar na 23 jaar in de bankenwereld wist ik één ding zeker: je delegeert alleen taken als je de risico's begrijpt en de juiste beveiligingslagen inbouwt. De Bitvavo-API gaf me die controle. Geen opnamerechten, Europese regels, euro-handel. Mijn bot draait nu 24/7 en ik slaap rustig, omdat het ergste dat kan gebeuren een slechte trade is – niet een leeggeroofd account. Dat verschil maakt technologie de moeite waard.</p></div>
+
+<h2>Hoe mijn bot er in de praktijk op draait</h2>
+<p>Elke minuut haalt de bot via de API de huidige BTC/EUR-prijs op, vergelijkt die met mijn moving averages, en beslist of er een order geplaatst moet worden. Als dat zo is, stuurt hij een POST-request naar het <code>/order</code>-endpoint van Bitvavo met parameters als market, side (buy/sell), orderType (market/limit) en amount. De exchange antwoordt met een orderId, die ik bewaar in mijn database. Later controleer ik of de order is uitgevoerd en update ik mijn positie.</p>
+<p>Geen magie, geen black box. Gewoon een kwestie van data ophalen, logica toepassen en opdrachten geven. De AI-agent van Replit schreef de Python-code, ik vertelde wat ik wilde. De Bitvavo-API maakte het mogelijk om dat plan om te zetten in echte trades, zonder dat ik zelf de browser hoef te openen. Dat geeft me tijd terug voor mijn gezin hier in Saigon – en dat was het doel vanaf dag één.</p>
+            <p style="font-size:.85rem;color:#64748b;border:1px solid var(--border);border-radius:8px;padding:1rem;margin-top:2.5rem"><strong style="color:#94a3b8">Disclaimer:</strong> dit artikel deelt mijn persoonlijke ervaring en is geen financieel advies. Crypto en gehandelde producten zijn risicovol — koersen kunnen hard dalen en een systeem dat in het verleden werkte, biedt geen garantie voor de toekomst. Handel alleen met geld dat je kunt missen.</p>
+        </main>
+        <aside class="sticky-sidebar">
+            <img src="https://www.google.com/s2/favicons?domain=bitvavo.com&sz=128" alt="Bitvavo logo" class="sidebar-logo">
+            <div class="sidebar-title">Bitvavo</div>
+            <a href="https://account.bitvavo.com/create?a=68DCE39715" target="_blank" class="btn-sidebar" rel="sponsored noopener">Open een Bitvavo-account →</a>
+            <div style="font-size: 0.75rem; color: #475569;">Affiliate disclosure · Laatst bijgewerkt 2026-06-12</div>
+        </aside>
+    </div>
+
+    <div class="related-tools">
+        <h3>Meer Nederlandstalige gidsen</h3>
+        <div class="related-grid">
+            <a href="ai-agent-kopen.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Een AI-agent kopen"><span class="related-name">Een AI-agent kopen</span></a>
+            <a href="ai-p-seo.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="AI + programmatic SEO"><span class="related-name">AI + programmatic SEO</span></a>
+            <a href="algoritmisch-traden.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Wat is algoritmisch traden"><span class="related-name">Wat is algoritmisch traden</span></a>
+            <a href="crypto-bot-bouwen-zonder-programmeren.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Een crypto-tradingbot bouwen zonder te kunnen programmeren"><span class="related-name">Een crypto-tradingbot bouwen zonder te kunnen programmeren</span></a>
+            <a href="emotieloos-crypto-traden.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Emotieloos crypto traden"><span class="related-name">Emotieloos crypto traden</span></a>
+            <a href="passief-inkomen-crypto.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Passief inkomen met crypto-systemen"><span class="related-name">Passief inkomen met crypto-systemen</span></a>
+            <a href="prop-firm-bot.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Prop firm bot"><span class="related-name">Prop firm bot</span></a>
+            <a href="wat-kost-een-trading-bot.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Wat kost het echt om een eigen trading-bot te draaien"><span class="related-name">Wat kost het echt om een eigen trading-bot te draaien</span></a>
+        </div>
+    </div>
+
+    <div class="network-section">
+        <h3>Explore Our Broader Network</h3>
+        <div class="network-grid">
+            <a href="https://aibuildermarketplace.com" target="_blank" class="network-card">
+                <span class="network-tag">THE DIRECTORY</span>
+                <div class="network-title">AI Builder Marketplace &rarr;</div>
+                <div class="network-desc">Our comprehensive directory of B2B software and AI tools.</div>
+            </a>
+            <a href="https://theweekly2pctedge.com" target="_blank" class="network-card">
+                <span class="network-tag">THE HONEST STACK</span>
+                <div class="network-title">The Weekly 2% Edge &rarr;</div>
+                <div class="network-desc">Deep-dive case studies on the specific tools we use to buy back our time.</div>
+            </a>
+            <a href="https://zerotouchsupport.com" target="_blank" class="network-card">
+                <span class="network-tag">CUSTOMER SERVICE</span>
+                <div class="network-title">ZeroTouchSupport &rarr;</div>
+                <div class="network-desc">Smart automation tools for scaling customer support without hiring an army.</div>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer-strip"><div class="footer-strip-left">© 2026 The Weekly AI Edge.</div><p style="font-size:.75rem;opacity:.6;text-align:center;margin:12px 0">Some links are affiliate links — we may earn a commission at no extra cost to you.</p>
+</footer>
+</body>
+</html>
