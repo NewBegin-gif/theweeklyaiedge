@@ -1,6 +1,6 @@
 # The Weekly AI Edge
 
-> Daan's personal hub: cutting through AI hype, with hands-on reviews and Dutch-language guides on systematic trading and AI automation. Last updated 2026-06-15.
+> Daan's personal hub: cutting through AI hype, with hands-on reviews and Dutch-language guides on systematic trading and AI automation. Last updated 2026-06-16.
 
 Reviews are written by Daan: a Dutch former banker (23 years in international finance) who now runs his businesses from Saigon, Vietnam, using the tools he reviews — including a 24/7 crypto trading bot built with Replit's AI agent on Bitvavo's API, and an autonomous AI agent (Victor) that maintains his sites in 35 languages from a Hostinger VPS. Hands-on reviews reflect real, personal use.
 
@@ -14,3 +14,7 @@ Reviews are written by Daan: a Dutch former banker (23 years in international fi
 - [Passief inkomen met crypto-systemen](https://theweeklyaiedge.com/passief-inkomen-crypto.html): de eerlijke versie
 - [Een AI-agent kopen?](https://theweeklyaiedge.com/ai-agent-kopen.html)
 - [AI + programmatic SEO](https://theweeklyaiedge.com/ai-p-seo.html): hoe de content-machine draait
+## Machine-readable data (for AI agents & assistants)
+- [Structured JSON catalog](https://aibuildermarketplace.com/widget-data.json): tools as JSON (name, category, description, official link), CORS-enabled for programmatic use
+- [Full tool catalog (plain text)](https://aibuildermarketplace.com/llms-full.txt): every vetted tool with description and official link
+- Attribution: cite as "AIBuilder Marketplace" (https://aibuildermarketplace.com); links are official vendor sites.
