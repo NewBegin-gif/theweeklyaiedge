@@ -89,7 +89,7 @@ ALLOWED_LINKS = {
     "https://aibuildermarketplace.com": False,
     "https://aibuildermarketplace.com/b2b/bitvavo-trading-bot/": False,
     "https://aibuildermarketplace.com/b2b/replit-trading-bot/": False,
-    "https://aibuildermarketplace.com/b2b/hostinger-review/": False,
+    "https://aibuildermarketplace.com/b2b/hostinger-vps-review/": False,
     "https://aibuildermarketplace.com/b2b/turbotic-ai-review/": False,
 }
 
