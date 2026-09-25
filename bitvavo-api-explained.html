@@ -80,7 +80,7 @@
 <p>All the major exchanges — Binance, Kraken, Coinbase, Bitvavo — offer an API like this. The difference lies in the documentation, the speed, the costs, and above all the security of how you configure that access. That last point was the deciding factor for me.</p>
 
 <h2>Why I chose Bitvavo over the alternatives</h2>
-<p>My situation: I live in Vietnam, but I'm Dutch. I wanted to trade in euros, not USD or USDT, because that saves on conversion costs and bookkeeping. Bitvavo is a Dutch exchange, regulated by De Nederlandsche Bank, and works directly with SEPA transfers. That gave me more confidence than a platform without a European license.</p>
+<p>My situation when I chose it: I was living in Vietnam, but I'm Dutch. I wanted to trade in euros, not USD or USDT, because that saves on conversion costs and bookkeeping. Bitvavo is a Dutch exchange, regulated by De Nederlandsche Bank, and works directly with SEPA transfers. That gave me more confidence than a platform without a European license.</p>
 <p>On top of that, the <a href="https://account.bitvavo.com/create?a=68DCE39715" rel="sponsored noopener" target="_blank">Bitvavo API documentation</a> is just plain understandable. No cryptic jargon, no unclear rate limits that suddenly lock you out of your account. The way in is to start small: see how orders work, and learn to read the error messages you get back. For someone with no programming background, that's worth its weight in gold.</p>
 
 <h2>The difference between read-only and trade-only API keys</h2>
@@ -91,7 +91,7 @@
 
 <h2>How my bot actually runs in practice</h2>
 <p>Every minute, the bot fetches the current BTC/EUR price through the API, compares it with my moving averages, and decides whether an order needs to be placed. If it does, it sends a POST request to Bitvavo's <code>/order</code> endpoint with parameters like market, side (buy/sell), orderType (market/limit), and amount. The exchange responds with an orderId, which I store in my database. Later, I check whether the order was executed and update my position.</p>
-<p>No magic, no black box. Just a matter of fetching data, applying logic, and giving instructions. Replit's AI agent wrote the Python code; I told it what I wanted. The Bitvavo API made it possible to turn that plan into real trades, without me ever having to open a browser myself. That gives me time back for my family here in Saigon — and that was the goal from day one.</p>
+<p>No magic, no black box. Just a matter of fetching data, applying logic, and giving instructions. Replit's AI agent wrote the Python code; I told it what I wanted. The Bitvavo API made it possible to turn that plan into real trades, without me ever having to open a browser myself. That gives me time back for my family — and that was the goal from day one.</p>
             <p style="font-size:.85rem;color:#64748b;border:1px solid var(--border);border-radius:8px;padding:1rem;margin-top:2.5rem"><strong style="color:#94a3b8">Disclaimer:</strong> this article shares my personal experience and is not financial advice. Crypto and traded products are risky — prices can fall hard, and a system that worked in the past is no guarantee for the future. Only trade with money you can afford to lose.</p>
         </main>
         <aside class="sticky-sidebar">

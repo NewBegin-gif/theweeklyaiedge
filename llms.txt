@@ -2,7 +2,7 @@
 
 > Daan's personal hub: guides from his own setup (a crypto trading bot and an AI agent on a VPS), and research summaries of AI tools with dated prices. Last updated 2026-09-25.
 
-Written by Daan: a Dutch former banker (23 years in international finance) who now runs his businesses from Saigon, Vietnam. The tools he runs himself are a Hostinger VPS (for his AI agent, Victor, which maintains his sites in 35 languages), Replit (where he built a 24/7 crypto trading bot with Replit's AI agent), Bitvavo (the exchange the bot trades on, through its API) and Claude. The guides describe that setup in the first person. The tool pages (Runpod, MindStudio, Consensus and others) are research summaries, not hands-on tests. Nothing here is financial advice.
+Written by Daan: a Dutch former banker (23 years in international finance) who now runs his businesses from Rotterdam, the Netherlands, after years in Asia (most recently Saigon, Vietnam). The tools he runs himself are a Hostinger VPS (for his AI agent, Victor, which maintains his sites in 35 languages), Replit (where he built a 24/7 crypto trading bot with Replit's AI agent), Bitvavo (the exchange the bot trades on, through its API) and Claude. The guides describe that setup in the first person. The tool pages (Runpod, MindStudio, Consensus and others) are research summaries, not hands-on tests. Nothing here is financial advice.
 
 ## Guides from my own setup
 - [Building a crypto trading bot without knowing how to code](https://theweeklyaiedge.com/build-a-crypto-bot-without-coding.html)
