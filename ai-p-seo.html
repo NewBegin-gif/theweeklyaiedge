@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI + programmatic SEO: hoe mijn content-machine draait</title>
+    <title>AI + programmatic SEO: how my content machine runs</title>
     <style>
         :root { --bg-dark: #050b14; --bg-card: #0b121f; --text-main: #f8fafc; --text-muted: #94a3b8; --accent: #38bdf8; --accent-hover: #0ea5e9; --border: #1e293b; }
         body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.7; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; }
@@ -50,9 +50,9 @@
         .footer-strip { background-color: #030712; padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); font-size: 0.85rem; color: #64748b; }
     </style>
   <link rel="canonical" href="https://theweeklyaiedge.com/ai-p-seo.html">
-  <meta name="description" content="Mijn AI-agent Victor genereert en onderhoudt honderden reviewpagina's in 35 talen — vanaf een VPS, zonder team. De architectuur, de lessen en de valkuilen van AI-pSEO.">
-  <meta property="og:title" content="AI + programmatic SEO: hoe mijn content-machine draait | The Weekly AI Edge">
-  <meta property="og:description" content="Mijn AI-agent Victor genereert en onderhoudt honderden reviewpagina's in 35 talen — vanaf een VPS, zonder team. De architectuur, de lessen en de valkuilen van AI-pSEO.">
+  <meta name="description" content="My AI agent Victor generates and maintains hundreds of review pages in 35 languages — from a VPS, without a team. The architecture, the lessons, and the pitfalls of AI pSEO.">
+  <meta property="og:title" content="AI + programmatic SEO: how my content machine runs | The Weekly AI Edge">
+  <meta property="og:description" content="My AI agent Victor generates and maintains hundreds of review pages in 35 languages — from a VPS, without a team. The architecture, the lessons, and the pitfalls of AI pSEO.">
   <meta property="og:url" content="https://theweeklyaiedge.com/ai-p-seo.html">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CW1KZ258ZV"></script>
   <script>
@@ -61,7 +61,7 @@
     gtag('js', new Date());
     gtag('config', 'G-CW1KZ258ZV');
   </script>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI + programmatic SEO: hoe mijn content-machine draait", "inLanguage": "nl", "mainEntityOfPage": "https://theweeklyaiedge.com/ai-p-seo.html", "datePublished": "2026-06-10", "dateModified": "2026-06-10", "author": {"@type": "Person", "name": "Daan", "url": "https://aibuildermarketplace.com/about/"}, "publisher": {"@type": "Organization", "name": "The Weekly AI Edge"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI + programmatic SEO: how my content machine runs", "inLanguage": "en", "mainEntityOfPage": "https://theweeklyaiedge.com/ai-p-seo.html", "datePublished": "2026-06-10", "dateModified": "2026-09-25", "author": {"@type": "Person", "name": "Daan", "url": "https://aibuildermarketplace.com/about/"}, "publisher": {"@type": "Organization", "name": "The Weekly AI Edge"}}</script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -72,41 +72,41 @@
     </nav>
     <div class="layout-wrapper">
         <main>
-            <h1>AI + programmatic SEO: hoe mijn content-machine draait</h1>
-            <p>Programmatic SEO — content op schaal genereren voor long-tail zoekopdrachten — heeft een slechte naam, en vaak terecht: het internet stroomt vol met lege AI-pagina's die niemand helpen. Toch draait mijn eigen pSEO-machine al maanden, in 35 talen, grotendeels zonder dat ik ernaar omkijk. Het verschil zit niet in de techniek maar in de uitgangspunten. Dit is hoe de machine werkt — inclusief de lessen die me tijd en geld hebben gekost.</p>
-            <h2>De architectuur in het kort</h2>
+            <h1>AI + programmatic SEO: how my content machine runs</h1>
+            <p>Programmatic SEO — generating content at scale for long-tail search queries — has a bad reputation, and often deservedly so: the internet is flooded with empty AI pages that help no one. Yet my own pSEO machine has been running for months, in 35 languages, largely without me having to keep an eye on it. The difference isn't in the technology but in the starting principles. Here's how the machine works — including the lessons that cost me time and money.</p>
+            <h2>The architecture in brief</h2>
             <ul>
-                <li><strong>Een VPS als thuisbasis.</strong> Alles draait op <a href="https://aibuildermarketplace.com/b2b/hostinger-review/" target="_blank" rel="nofollow noopener">een Hostinger VPS</a>: mijn agent Victor, de generators, de geplande taken. Geen laptop die aan moet staan, geen afhankelijkheid van mijn aanwezigheid.</li>
-                <li><strong>Generators in plaats van losse pagina's.</strong> Eén template + één databron = honderden consistente pagina's. Pas je het template aan, dan verbetert álles tegelijk.</li>
-                <li><strong>GitHub als ruggengraat.</strong> Victor pusht naar een staging-branch; een uurlijkse controle promoot alleen wat door de checks komt naar de live site. Fouten bereiken de bezoeker zelden.</li>
-                <li><strong>Zelfherstellende taken.</strong> De belangrijkste les: bouw geen scripts die één keer fixen, maar terugkerende taken die élke run controleren en repareren — dubbele koppen, ontbrekende vertalingen, kapotte metadata. De machine onderhoudt zichzelf.</li>
+                <li><strong>A VPS as home base.</strong> Everything runs on <a href="https://aibuildermarketplace.com/b2b/hostinger-review/" target="_blank" rel="nofollow noopener">a Hostinger VPS</a>: my agent Victor, the generators, the scheduled tasks. No laptop that needs to stay on, no dependency on my being around.</li>
+                <li><strong>Generators instead of individual pages.</strong> One template + one data source = hundreds of consistent pages. Update the template, and everything improves at once.</li>
+                <li><strong>GitHub as the backbone.</strong> Victor pushes to a staging branch; an hourly check only promotes what passes the checks to the live site. Errors rarely reach visitors.</li>
+                <li><strong>Self-healing tasks.</strong> The most important lesson: don't build scripts that fix something once — build recurring tasks that check and repair on every run: duplicate headings, missing translations, broken metadata. The machine maintains itself.</li>
             </ul>
-            <h2>Wat AI-pSEO laat werken (en wat niet)</h2>
-            <p>Wat niet werkt: kale AI-tekst zonder eigen ervaring of data erin. Google prikt erdoorheen en je lezer ook. Wat wél werkt: programmatische schaal combineren met echte, eerstehands inhoud — mijn reviews zijn gebaseerd op tools die ik zelf gebruik, geschreven vanuit een herkenbare auteur met een echt verhaal. De machine schaalt de distributie; de geloofwaardigheid moet van jou komen. En vergeet de talen niet: dezelfde review in 35 talen aanbieden (met nette hreflang-clusters) was voor mij de grootste onderschatte hefboom.</p>
-            <h2>De eerlijke kosten en valkuilen</h2>
-            <p>Reken op: VPS-kosten (een paar euro per maand), API-kosten voor het taalmodel, en vooral leertijd. Mijn duurste lessen: hardcoded API-sleutels in code die per ongeluk publiek werd (roteer je sleutels, gebruik environment-variabelen), en generators die maandenlang een subtiele fout herhaalden op elke pagina voordat ik het zag. Monitor je output — een machine maakt ook fouten op schaal.</p>
+            <h2>What makes AI pSEO work (and what doesn't)</h2>
+            <p>What doesn't work: bare AI text with no real experience or data behind it. Google sees through it, and so does your reader. What does work: combining programmatic scale with real, first-hand content — my reviews are based on tools I actually use, written from a recognizable author with a real story. The machine scales the distribution; the credibility has to come from you. And don't forget the languages: offering the same review in 35 languages (with clean hreflang clustering) turned out to be the biggest underrated lever for me.</p>
+            <h2>The honest costs and pitfalls</h2>
+            <p>Budget for: VPS costs (a few euros a month), API costs for the language model, and above all, learning time. My most expensive lessons: hardcoded API keys in code that accidentally went public (rotate your keys, use environment variables), and generators that repeated a subtle error on every page until a check caught it. Monitor your output — a machine makes mistakes at scale too.</p>
             <div class="crosslink-box">
                 <h3>The Edge Perspective</h3>
-                <p>De machine is geen doel maar een middel: zij doet de digitale corvee, zodat ik mijn middagen kan afsluiten en bij mijn gezin kan zijn. Wil je zien wat zo'n systeem aan output levert? Kijk op <a href="https://aibuildermarketplace.com" target="_blank" rel="nofollow noopener">AI Builder Marketplace</a> — volledig door Victor onderhouden. Hoe ik hem bouwde lees je in <a href="ai-agent-kopen.html">het artikel over AI-agents</a>.</p>
+                <p>The machine isn't the goal, it's a means: it handles the digital grunt work, so I can close my afternoons and be with my family. Want to see what a system like this produces? Check out <a href="https://aibuildermarketplace.com" target="_blank" rel="nofollow noopener">AI Builder Marketplace</a> — fully maintained by Victor. You can read how I built him in <a href="buying-an-ai-agent.html">the article about AI agents</a>.</p>
             </div>
-            
+
         </main>
         <aside class="sticky-sidebar">
             <img src="https://www.google.com/s2/favicons?domain=hostinger.com&sz=128" alt="Hostinger VPS logo" class="sidebar-logo">
             <div class="sidebar-title">Hostinger VPS</div>
-            <a href="https://www.hostinger.com?REFERRALCODE=UZUDGLHAKW67" target="_blank" class="btn-sidebar" rel="sponsored noopener">Start je eigen VPS →</a>
-            <div style="font-size: 0.75rem; color: #475569;">Affiliate disclosure · Laatst bijgewerkt 2026-06-10</div>
+            <a href="https://www.hostinger.com?REFERRALCODE=UZUDGLHAKW67" target="_blank" class="btn-sidebar" rel="sponsored noopener">Start your own VPS →</a>
+            <div style="font-size: 0.75rem; color: #475569;">Affiliate link: we may earn a commission if you sign up, at no extra cost to you. Last updated 2026-09-25</div>
         </aside>
     </div>
 
     <div class="related-tools">
-        <h3>Meer Nederlandstalige gidsen</h3>
+        <h3>More guides</h3>
         <div class="related-grid">
-            <a href="algoritmisch-traden.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Wat is algoritmisch traden"><span class="related-name">Wat is algoritmisch traden</span></a>
-            <a href="emotieloos-crypto-traden.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Emotieloos crypto traden"><span class="related-name">Emotieloos crypto traden</span></a>
-            <a href="passief-inkomen-crypto.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Passief inkomen met crypto-systemen"><span class="related-name">Passief inkomen met crypto-systemen</span></a>
+            <a href="algorithmic-trading.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="What is algorithmic trading"><span class="related-name">What is algorithmic trading</span></a>
+            <a href="emotion-free-crypto-trading.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Emotion-free crypto trading"><span class="related-name">Emotion-free crypto trading</span></a>
+            <a href="passive-income-from-crypto.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Passive income with crypto systems"><span class="related-name">Passive income with crypto systems</span></a>
             <a href="prop-firm-bot.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Prop firm bot"><span class="related-name">Prop firm bot</span></a>
-            <a href="ai-agent-kopen.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Een AI-agent kopen"><span class="related-name">Een AI-agent kopen</span></a>
+            <a href="buying-an-ai-agent.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Buying an AI agent"><span class="related-name">Buying an AI agent</span></a>
             <a href="https://aibuildermarketplace.com/b2b/bitvavo-trading-bot/" target="_blank" class="related-card" rel="nofollow noopener"><img src="https://www.google.com/s2/favicons?domain=bitvavo.com&sz=128" class="related-icon" alt="Bitvavo"><span class="related-name">Bitvavo Review</span></a>
             <a href="https://aibuildermarketplace.com/b2b/replit-trading-bot/" target="_blank" class="related-card" rel="nofollow noopener"><img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" class="related-icon" alt="Replit"><span class="related-name">Replit Review</span></a>
         </div>
@@ -118,24 +118,24 @@
             <a href="https://aibuildermarketplace.com" target="_blank" class="network-card" rel="nofollow noopener">
                 <span class="network-tag">THE DIRECTORY</span>
                 <div class="network-title">AI Builder Marketplace &rarr;</div>
-                <div class="network-desc">Our comprehensive directory of B2B software and AI tools.</div>
+                <div class="network-desc">Reviews of AI and B2B software, with dated prices and sources.</div>
             </a>
             <a href="https://theweekly2pctedge.com" target="_blank" class="network-card" rel="nofollow noopener">
-                <span class="network-tag">THE HONEST STACK</span>
+                <span class="network-tag">SMALL GAINS</span>
                 <div class="network-title">The Weekly 2% Edge &rarr;</div>
                 <div class="network-desc">Deep-dive case studies on the specific tools we use to buy back our time.</div>
             </a>
             <a href="https://zerotouchsupport.com" target="_blank" class="network-card" rel="nofollow noopener">
-                <span class="network-tag">CUSTOMER SERVICE</span>
+                <span class="network-tag">CUSTOMER SUPPORT</span>
                 <div class="network-title">ZeroTouchSupport &rarr;</div>
                 <div class="network-desc">Smart automation tools for scaling customer support without hiring an army.</div>
             </a>
         </div>
     </div>
 
-    
 
-<aside class="related-reviews" style="max-width:760px;margin:2.5rem auto 0;padding:1rem 1.3rem;border-top:1px solid var(--accent,#6366f1)"><strong style="display:block;margin-bottom:.5rem">More reviews &amp; guides</strong><ul style="list-style:none;padding:0;margin:0;font-size:.9rem"><li style="margin:4px 0"><a href="/algoritmisch-traden.html">Wat is algoritmisch traden? Uitleg van een ex-bankier</a></li><li style="margin:4px 0"><a href="/aspire.html">Aspire: The Finance Layer for an AI-First, Borderless Business</a></li><li style="margin:4px 0"><a href="/bitvavo-api-uitleg.html">De Bitvavo-API uitgelegd voor niet-programmeurs</a></li><li style="margin:4px 0"><a href="/bright-data.html">The fuel for agentic workflows: Why Bright Data is non-negotiable</a></li></ul></aside>
+
+<aside class="related-reviews" style="max-width:760px;margin:2.5rem auto 0;padding:1rem 1.3rem;border-top:1px solid var(--accent,#6366f1)"><strong style="display:block;margin-bottom:.5rem">More reviews &amp; guides</strong><ul style="list-style:none;padding:0;margin:0;font-size:.9rem"><li style="margin:4px 0"><a href="/algorithmic-trading.html">What is algorithmic trading? An ex-banker explains</a></li><li style="margin:4px 0"><a href="/aspire.html">Aspire: price, catch and who it suits</a></li><li style="margin:4px 0"><a href="/bitvavo-api-explained.html">The Bitvavo API explained for non-programmers</a></li><li style="margin:4px 0"><a href="/bright-data.html">Bright Data: price, catch and who it suits</a></li></ul></aside>
 <footer class="footer-strip"><div class="footer-strip-left">© 2026 The Weekly AI Edge.</div><p style="font-size:.75rem;opacity:.6;text-align:center;margin:12px 0">Some links are affiliate links — we may earn a commission at no extra cost to you.</p>
 <!--sister-net-start-->
 <nav aria-label="Sister sites" style="max-width:1100px;margin:28px auto 0;padding:16px 20px 4px;border-top:1px solid rgba(128,128,128,.22);font-size:.8rem;line-height:2;text-align:center;opacity:.8"><span style="display:block;text-transform:uppercase;letter-spacing:.12em;font-size:.66rem;opacity:.7;margin-bottom:4px">Part of the network</span><a href="https://aibuildermarketplace.com/?utm_source=theweeklyaiedge&utm_medium=footer_net&utm_campaign=cross_brand" target="_blank" rel="nofollow noopener" style="color:inherit;text-decoration:underline;white-space:nowrap">AI Builder Marketplace</a> <span style="opacity:.4">&middot;</span> <a href="https://officesoftwaremarketplace.com/?utm_source=theweeklyaiedge&utm_medium=footer_net&utm_campaign=cross_brand" target="_blank" rel="nofollow noopener" style="color:inherit;text-decoration:underline;white-space:nowrap">Office Software</a> <span style="opacity:.4">&middot;</span> <a href="https://marketingandsalessoftware.com/?utm_source=theweeklyaiedge&utm_medium=footer_net&utm_campaign=cross_brand" target="_blank" rel="nofollow noopener" style="color:inherit;text-decoration:underline;white-space:nowrap">Marketing & Sales Software</a> <span style="opacity:.4">&middot;</span> <a href="https://theweekly2pctedge.com/?utm_source=theweeklyaiedge&utm_medium=footer_net&utm_campaign=cross_brand" target="_blank" rel="nofollow noopener" style="color:inherit;text-decoration:underline;white-space:nowrap">The Weekly 2% Edge</a> <span style="opacity:.4">&middot;</span> <a href="https://zerotouchsupport.com/?utm_source=theweeklyaiedge&utm_medium=footer_net&utm_campaign=cross_brand" target="_blank" rel="nofollow noopener" style="color:inherit;text-decoration:underline;white-space:nowrap">ZeroTouch Support</a><span style="display:block;margin-top:6px;font-size:.72rem;opacity:.65">Six sites, one owner &mdash; all built and run by <a href="https://aibuildermarketplace.com/about/?utm_source=theweeklyaiedge&utm_medium=footer_net&utm_campaign=network_owner" rel="nofollow noopener" target="_blank" style="color:inherit">Daniel Haket</a>.</span></nav>

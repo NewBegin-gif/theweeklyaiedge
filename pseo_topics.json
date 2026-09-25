@@ -1,66 +1,222 @@
 [
   {
-    "slug": "crypto-bot-bouwen-zonder-programmeren",
-    "onderwerp": "Een crypto-tradingbot bouwen zonder te kunnen programmeren",
-    "invalshoek": "Daans eigen route: van idee op het balkon tot draaiende bot, met de AI-agent van Replit gebouwd en aan de Bitvavo-API gekoppeld. Stap voor stap wat erbij komt kijken (regels bedenken, bouwen met een AI-assistent, klein testen), eerlijk over leergeld en risico's.",
-    "links": ["https://aibuildermarketplace.com/b2b/replit-trading-bot/", "https://aibuildermarketplace.com/b2b/bitvavo-trading-bot/", "https://replit.com/signup?referral=dglhaket", "https://theweekly2pctedge.com"],
+    "slug": "build-a-crypto-bot-without-coding",
+    "topic": "Building a crypto trading bot without knowing how to code",
+    "angle": "Daan's own route: a trading bot built with Replit's AI agent and connected to the Bitvavo API. What it takes (writing rules, building with an AI assistant, testing small), honest about the cost of learning and the risks.",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/replit-review/",
+      "https://aibuildermarketplace.com/b2b/bitvavo-review/",
+      "https://replit.com/signup?referral=dglhaket"
+    ],
     "sidebar": "replit",
     "disclaimer": true
   },
   {
-    "slug": "wat-kost-een-trading-bot",
-    "onderwerp": "Wat kost het echt om een eigen trading-bot te draaien?",
-    "invalshoek": "Eerlijke kostenposten zonder bedragen te verzinnen: hosting, handelskosten per transactie (dalen bij volume), API-kosten van AI-assistenten tijdens het bouwen, en leergeld. Tegenwicht tegen 'gratis geld'-verhalen.",
-    "links": ["https://aibuildermarketplace.com/b2b/bitvavo-trading-bot/", "https://account.bitvavo.com/create?a=68DCE39715", "https://theweekly2pctedge.com"],
+    "slug": "what-a-trading-bot-costs",
+    "topic": "What does it really cost to run your own trading bot?",
+    "angle": "Honest cost items without inventing amounts: hosting, trading fees per transaction (lower at volume), AI assistant costs while building, and the cost of learning. A counterweight to 'free money' stories.",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/bitvavo-review/",
+      "https://account.bitvavo.com/create?a=68DCE39715"
+    ],
     "sidebar": "bitvavo",
     "disclaimer": true
   },
   {
-    "slug": "bitvavo-api-uitleg",
-    "onderwerp": "De Bitvavo-API uitgelegd voor niet-programmeurs",
-    "invalshoek": "Wat een exchange-API is, waarom Daan voor Bitvavo koos (EU-gereguleerd, euro), het belang van trade-only API-sleutels zonder opnamerechten, en hoe zijn bot er 24/7 op draait.",
-    "links": ["https://aibuildermarketplace.com/b2b/bitvavo-trading-bot/", "https://account.bitvavo.com/create?a=68DCE39715", "https://aibuildermarketplace.com/b2b/replit-trading-bot/"],
+    "slug": "bitvavo-api-explained",
+    "topic": "The Bitvavo API explained for non-programmers",
+    "angle": "What an exchange API is, why Daan chose Bitvavo (EU-regulated, euro), why trade-only API keys without withdrawal rights matter, and how his bot runs on it 24/7.",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/bitvavo-review/",
+      "https://account.bitvavo.com/create?a=68DCE39715",
+      "https://aibuildermarketplace.com/b2b/replit-review/"
+    ],
     "sidebar": "bitvavo",
     "disclaimer": true
   },
   {
-    "slug": "ai-automatisering-eenmanszaak",
-    "onderwerp": "AI-automatisering voor de eenmanszaak: wat werkt echt",
-    "invalshoek": "Hoe Daan als eenpitter een 'bedrijf met meerdere werknemers' simuleert: Victor op de VPS doet content, bots doen de corvee, hij doet strategie en partnerships. Nuchter: begin met één taak die je nooit meer wilt doen.",
-    "links": ["https://aibuildermarketplace.com/b2b/hostinger-review/", "https://www.hostinger.com?REFERRALCODE=UZUDGLHAKW67", "https://aibuildermarketplace.com/b2b/turbotic-ai-review/", "https://aibuildermarketplace.com"],
+    "slug": "ai-automation-for-a-one-person-business",
+    "topic": "AI automation for a one-person business",
+    "angle": "",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/hostinger-review/",
+      "https://www.hostinger.com?REFERRALCODE=UZUDGLHAKW67",
+      "https://aibuildermarketplace.com"
+    ],
     "sidebar": "hostinger",
     "disclaimer": false
   },
   {
-    "slug": "vps-voor-beginners",
-    "onderwerp": "Een VPS voor beginners: je eigen computer in de cloud",
-    "invalshoek": "Wat een VPS is in gewone taal, waarom Daan er zijn hele digitale netwerk op draait, hoe je er zonder Linux-kennis mee start (AI-assistent schrijft de commando's, jij plakt ze), en wanneer shared hosting genoeg is.",
-    "links": ["https://aibuildermarketplace.com/b2b/hostinger-review/", "https://www.hostinger.com?REFERRALCODE=UZUDGLHAKW67"],
+    "slug": "vps-for-beginners",
+    "topic": "A VPS for beginners",
+    "angle": "",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/hostinger-review/",
+      "https://www.hostinger.com?REFERRALCODE=UZUDGLHAKW67"
+    ],
     "sidebar": "hostinger",
     "disclaimer": false
   },
   {
-    "slug": "emotie-grootste-vijand-belegger",
-    "onderwerp": "Waarom emotie de grootste vijand van elke belegger is",
-    "invalshoek": "Daans observaties uit 23 jaar bankenwereld: slimme mensen, domme paniekbeslissingen. Wat een systeem met vaste regels daaraan verandert, en de valkuil van handmatig ingrijpen als het tegenzit.",
-    "links": ["https://aibuildermarketplace.com/b2b/bitvavo-trading-bot/", "https://theweekly2pctedge.com", "https://account.bitvavo.com/create?a=68DCE39715"],
-    "sidebar": "w2e",
+    "slug": "emotion-the-investors-worst-enemy",
+    "topic": "Emotion: the investor's worst enemy",
+    "angle": "",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/bitvavo-review/",
+      "https://account.bitvavo.com/create?a=68DCE39715"
+    ],
+    "sidebar": "bitvavo",
     "disclaimer": true
   },
   {
-    "slug": "ai-agent-laten-bouwen-of-zelf-doen",
-    "onderwerp": "Een AI-agent laten bouwen of zelf doen?",
-    "invalshoek": "De afweging uitbesteden vs zelf bouwen met AI-assistenten. Daans ervaring: zelf bouwen is leerzamer, goedkoper op termijn, en je kunt het zelf repareren. Wanneer uitbesteden wél logisch is (geen tijd, eenmalig project).",
-    "links": ["https://aibuildermarketplace.com/b2b/hostinger-review/", "https://aibuildermarketplace.com/b2b/turbotic-ai-review/", "https://aibuildermarketplace.com", "https://www.hostinger.com?REFERRALCODE=UZUDGLHAKW67"],
+    "slug": "build-or-hire-an-ai-agent",
+    "topic": "Build an AI agent yourself or have one built",
+    "angle": "",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/hostinger-review/",
+      "https://aibuildermarketplace.com",
+      "https://www.hostinger.com?REFERRALCODE=UZUDGLHAKW67"
+    ],
     "sidebar": "hostinger",
     "disclaimer": false
   },
   {
-    "slug": "wekelijkse-routine-systematisch-traden",
-    "onderwerp": "Mijn wekelijkse routine als systematische trader",
-    "invalshoek": "Hoe een week eruitziet als je systeem het werk doet: dashboard checken, logs bekijken, af en toe een regel verbeteren, verder leven. Contrast met het daytrader-cliché van schermen staren. Geen resultaten of cijfers noemen.",
-    "links": ["https://theweekly2pctedge.com", "https://aibuildermarketplace.com/b2b/replit-trading-bot/", "https://aibuildermarketplace.com/b2b/bitvavo-trading-bot/"],
-    "sidebar": "w2e",
+    "slug": "weekly-routine-for-systematic-trading",
+    "topic": "A weekly routine for systematic trading",
+    "angle": "",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/replit-review/",
+      "https://aibuildermarketplace.com/b2b/bitvavo-review/",
+      "https://account.bitvavo.com/create?a=68DCE39715"
+    ],
+    "sidebar": "bitvavo",
     "disclaimer": true
+  },
+  {
+    "slug": "buying-an-ai-agent",
+    "topic": "Buying an AI agent",
+    "angle": "",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/hostinger-review/",
+      "https://www.hostinger.com?REFERRALCODE=UZUDGLHAKW67"
+    ],
+    "sidebar": "hostinger",
+    "disclaimer": false
+  },
+  {
+    "slug": "ai-p-seo",
+    "topic": "Programmatic SEO with AI",
+    "angle": "",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/hostinger-review/",
+      "https://aibuildermarketplace.com"
+    ],
+    "sidebar": "hostinger",
+    "disclaimer": false
+  },
+  {
+    "slug": "algorithmic-trading",
+    "topic": "Algorithmic trading explained",
+    "angle": "",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/replit-review/",
+      "https://aibuildermarketplace.com/b2b/bitvavo-review/",
+      "https://account.bitvavo.com/create?a=68DCE39715"
+    ],
+    "sidebar": "bitvavo",
+    "disclaimer": true
+  },
+  {
+    "slug": "emotion-free-crypto-trading",
+    "topic": "Emotion-free crypto trading",
+    "angle": "",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/bitvavo-review/",
+      "https://account.bitvavo.com/create?a=68DCE39715"
+    ],
+    "sidebar": "bitvavo",
+    "disclaimer": true
+  },
+  {
+    "slug": "passive-income-from-crypto",
+    "topic": "Passive income from crypto",
+    "angle": "",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/bitvavo-review/",
+      "https://account.bitvavo.com/create?a=68DCE39715"
+    ],
+    "sidebar": "bitvavo",
+    "disclaimer": true
+  },
+  {
+    "slug": "prop-firm-bot",
+    "topic": "Prop firm bots",
+    "angle": "",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/bitvavo-review/",
+      "https://account.bitvavo.com/create?a=68DCE39715"
+    ],
+    "sidebar": "bitvavo",
+    "disclaimer": true
+  },
+  {
+    "slug": "trade-only-api-keys",
+    "topic": "Trade-only API keys: the one setting that limits the damage",
+    "angle": "Why Daan's bot uses an exchange API key that can place trades but cannot withdraw funds, what that protects against and what it does not (a bad strategy can still lose money). Where keys should live (environment secrets, never in code), and rotating them. Practical, no figures.",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/bitvavo-review/",
+      "https://account.bitvavo.com/create?a=68DCE39715",
+      "https://aibuildermarketplace.com/b2b/replit-review/"
+    ],
+    "sidebar": "bitvavo",
+    "disclaimer": true
+  },
+  {
+    "slug": "monitoring-a-trading-bot",
+    "topic": "How I keep an eye on a bot that trades while I sleep",
+    "angle": "What monitoring a 24/7 bot involves in Daan's setup: a dashboard, Telegram alerts, a weekly report. The lesson that a report can be wrong while looking right: check its numbers against the exchange itself now and then. No returns, no figures.",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/replit-review/",
+      "https://aibuildermarketplace.com/b2b/bitvavo-review/",
+      "https://replit.com/signup?referral=dglhaket"
+    ],
+    "sidebar": "replit",
+    "disclaimer": true
+  },
+  {
+    "slug": "when-ai-agent-credits-get-expensive",
+    "topic": "When an AI coding agent gets expensive: what I changed",
+    "angle": "Daan built his bot with Replit's AI agent; because each change drew down agent credits, he moved code changes to Claude and kept the bot hosted on Replit. Explain effort-based billing in plain words, the trade-off, and when an agent is still the right tool. Neutral about Replit, no amounts.",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/replit-review/",
+      "https://replit.com/signup?referral=dglhaket",
+      "https://aibuildermarketplace.com"
+    ],
+    "sidebar": "replit",
+    "disclaimer": false
+  },
+  {
+    "slug": "what-an-ai-agent-on-a-vps-does-all-day",
+    "topic": "What an AI agent on a VPS actually does all day",
+    "angle": "Victor, Daan's AI agent on a Hostinger VPS: scheduled jobs that build and check pages, a publishing chain with checks before anything goes live, and alerts when something fails. Honest that it needs supervision: an agent can repeat a mistake quietly until a check catches it. No invented incidents or durations.",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/hostinger-review/",
+      "https://www.hostinger.com?REFERRALCODE=UZUDGLHAKW67",
+      "https://aibuildermarketplace.com"
+    ],
+    "sidebar": "hostinger",
+    "disclaimer": false
+  },
+  {
+    "slug": "checks-before-automation-publishes",
+    "topic": "The checks I put between an AI agent and my live sites",
+    "angle": "Why automated publishing needs gates: every change runs through checks (broken links, missing prices, claims without a source) before it goes live, and a failed check stops the run instead of publishing. What a one-person business can copy from that without writing much code. No figures.",
+    "links": [
+      "https://aibuildermarketplace.com/b2b/hostinger-review/",
+      "https://aibuildermarketplace.com",
+      "https://www.hostinger.com?REFERRALCODE=UZUDGLHAKW67"
+    ],
+    "sidebar": "hostinger",
+    "disclaimer": false
   }
 ]
