@@ -1,24 +1,29 @@
 # The Weekly AI Edge
 
-> Daan's personal hub: guides from his own setup (a crypto trading bot and an AI agent on a VPS), and research summaries of AI tools with dated prices. Last updated 2026-09-25.
+> Daan's personal hub: guides from his own setup (a crypto trading bot and an AI agent on a VPS), and research summaries of AI tools with dated prices. Nothing here is financial advice. Last updated 2026-09-26.
 
-Written by Daan: a Dutch former banker (23 years in international finance) who now runs his businesses from Rotterdam, the Netherlands, after years in Asia (most recently Saigon, Vietnam). The tools he runs himself are a Hostinger VPS (for his AI agent, Victor, which maintains his sites in 35 languages), Replit (where he built a 24/7 crypto trading bot with Replit's AI agent), Bitvavo (the exchange the bot trades on, through its API) and Claude. The guides describe that setup in the first person. The tool pages (Runpod, MindStudio, Consensus and others) are research summaries, not hands-on tests. Nothing here is financial advice.
+Reviews are written by Daan: a Dutch former banker (23 years in international finance) who runs his businesses from Rotterdam, the Netherlands. Most reviews are researched assessments, read from the vendor's own pages and from what other buyers report; where he has run a tool himself, the review says so. His own stack: a Hostinger VPS for his AI agent Victor, which maintains his sites in 35 languages; Replit, where he built a 24/7 crypto trading bot with Replit's AI agent; Bitvavo, the exchange that bot trades on; and Claude.
 
 ## Guides from my own setup
 - [Building a crypto trading bot without knowing how to code](https://theweeklyaiedge.com/build-a-crypto-bot-without-coding.html)
-- [The Bitvavo API explained](https://theweeklyaiedge.com/bitvavo-api-explained.html)
-- [What a trading bot really costs](https://theweeklyaiedge.com/what-a-trading-bot-costs.html)
-- [Algorithmic trading explained](https://theweeklyaiedge.com/algorithmic-trading.html)
-- [Emotion-free crypto trading](https://theweeklyaiedge.com/emotion-free-crypto-trading.html)
-- [Passive income from crypto: the honest version](https://theweeklyaiedge.com/passive-income-from-crypto.html)
-- [Programmatic SEO with AI](https://theweeklyaiedge.com/ai-p-seo.html): how the content engine runs
-- [Buying an AI agent](https://theweeklyaiedge.com/buying-an-ai-agent.html)
-- [A VPS for beginners](https://theweeklyaiedge.com/vps-for-beginners.html)
-## Tool research
+- [What does it really cost to run your own trading bot?](https://theweeklyaiedge.com/what-a-trading-bot-costs.html)
+- [The Bitvavo API explained for non-programmers](https://theweeklyaiedge.com/bitvavo-api-explained.html)
+- [AI automation for the one-person business: what actually works](https://theweeklyaiedge.com/ai-automation-for-a-one-person-business.html)
+- [A VPS for beginners: your own computer in the cloud](https://theweeklyaiedge.com/vps-for-beginners.html)
+- [Emotion is every investor's worst enemy](https://theweeklyaiedge.com/emotion-the-investors-worst-enemy.html)
+- [Build or hire an AI agent?](https://theweeklyaiedge.com/build-or-hire-an-ai-agent.html)
+- [My weekly routine as a systematic trader](https://theweeklyaiedge.com/weekly-routine-for-systematic-trading.html)
+- [Buying an AI agent? What you actually need (and what it costs)](https://theweeklyaiedge.com/buying-an-ai-agent.html)
+- [AI + programmatic SEO: how my content machine runs](https://theweeklyaiedge.com/ai-p-seo.html)
+- [What is algorithmic trading? An ex-banker explains](https://theweeklyaiedge.com/algorithmic-trading.html)
+- [Emotion-free crypto trading: why my bot sleeps better than I do](https://theweeklyaiedge.com/emotion-free-crypto-trading.html)
+- [Passive income with crypto systems: the honest version](https://theweeklyaiedge.com/passive-income-from-crypto.html)
+- [Prop firm bot: can an algorithm pass your evaluation?](https://theweeklyaiedge.com/prop-firm-bot.html)
+## Tool research (not hands-on tests)
 - [Runpod](https://theweeklyaiedge.com/runpod.html)
 - [MindStudio](https://theweeklyaiedge.com/mindstudio.html)
 - [Consensus](https://theweeklyaiedge.com/consensus.html)
 ## Machine-readable data (for AI agents & assistants)
 - [Structured JSON catalog](https://aibuildermarketplace.com/widget-data.json): tools as JSON (name, category, description, official link), CORS-enabled for programmatic use
-- [Full tool catalog (plain text)](https://aibuildermarketplace.com/llms-full.txt): every tool with description and official link
+- [Full tool catalog (plain text)](https://aibuildermarketplace.com/llms-full.txt): every vetted tool with description and official link
 - Attribution: cite as "AIBuilder Marketplace" (https://aibuildermarketplace.com); links are official vendor sites.
