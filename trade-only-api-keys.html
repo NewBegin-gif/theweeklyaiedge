@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade-Only API Keys: Limiting the Damage | The Weekly AI Edge</title>
+    <style>
+        :root { --bg-dark: #050b14; --bg-card: #0b121f; --text-main: #f8fafc; --text-muted: #94a3b8; --accent: #38bdf8; --accent-hover: #0ea5e9; --border: #1e293b; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.7; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; }
+        .top-bar { background-color: #030712; color: #94a3b8; text-align: center; padding: 0.6rem 1rem; font-size: 0.85rem; border-bottom: 1px solid var(--border); font-weight: 500; }
+        nav { padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; background-color: rgba(5, 11, 20, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
+        .logo { font-size: 1.4rem; font-weight: 800; color: #ffffff; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
+        .logo-dot { color: var(--accent); font-size: 1.2rem; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text-main); }
+        .layout-wrapper { display: grid; grid-template-columns: 1fr 320px; gap: 4rem; max-width: 1100px; margin: 4rem auto; padding: 0 1.5rem; align-items: start; }
+        @media (max-width: 900px) { .layout-wrapper { grid-template-columns: 1fr; gap: 2rem; } .sticky-sidebar { position: static !important; } }
+        h1 { font-size: 2.5rem; margin-bottom: 2rem; color: #fff; line-height: 1.2; font-weight: 800; }
+        h2 { font-size: 1.6rem; margin: 2.5rem 0 1rem; color: #fff; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        p { margin-bottom: 1.25rem; color: var(--text-muted); font-size: 1.1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; color: var(--text-muted); font-size: 1.1rem; }
+        li { margin-bottom: 0.8rem; }
+        strong { color: var(--text-main); }
+        .crosslink-box { background-color: rgba(56, 189, 248, 0.05); border-left: 4px solid var(--accent); padding: 1.5rem; margin: 3rem 0; border-radius: 0 8px 8px 0; }
+        .sticky-sidebar { position: sticky; top: 120px; background-color: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
+        .sidebar-logo { width: 72px; height: 72px; border-radius: 12px; margin-bottom: 1rem; object-fit: contain; background: white; padding: 10px; border: 1px solid var(--border); }
+        .sidebar-title { font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem; font-weight: 800; }
+        .btn-sidebar { display: block; background-color: var(--accent); color: #0f172a; padding: 1rem; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.2s; margin-bottom: 1rem; font-size: 1.05rem; }
+        .btn-sidebar:hover { background-color: var(--accent-hover); }
+
+        /* Cross-linking CSS */
+        .related-tools { max-width: 1100px; margin: 2rem auto 4rem; padding: 3rem 1.5rem 0; border-top: 1px solid var(--border); }
+        .related-tools h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2rem; text-align: center; }
+        .related-grid { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        .related-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 2rem; text-align: center; text-decoration: none; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; min-width: 150px; }
+        .related-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .related-icon { width: 48px; height: 48px; border-radius: 10px; object-fit: contain; background: white; padding: 6px; }
+        .related-name { color: var(--text-main); font-size: 0.95rem; font-weight: 600; }
+
+        .network-section { max-width: 1100px; margin: 0 auto 6rem; padding: 0 1.5rem; }
+        .network-section h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2rem; text-align: center; }
+        .network-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .network-card { background: linear-gradient(145deg, #0b121f 0%, #0f172a 100%); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; text-decoration: none; transition: all 0.2s; display: block; }
+        .network-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .network-tag { font-family: monospace; font-size: 0.75rem; color: var(--accent); margin-bottom: 0.8rem; display: block; letter-spacing: 1px; }
+        .network-title { color: #fff; font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem; }
+        .network-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
+
+        .footer-strip { background-color: #030712; padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); font-size: 0.85rem; color: #64748b; }
+    </style>
+  <link rel="canonical" href="https://theweeklyaiedge.com/trade-only-api-keys.html">
+  <meta name="description" content="Why my trading bot uses an API key that can trade but never withdraw, what that protects against, and why key storage and rotation still matter.">
+  <meta property="og:title" content="Trade-Only API Keys: Limiting the Damage | The Weekly AI Edge">
+  <meta property="og:description" content="Why my trading bot uses an API key that can trade but never withdraw, what that protects against, and why key storage and rotation still matter.">
+  <meta property="og:url" content="https://theweeklyaiedge.com/trade-only-api-keys.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CW1KZ258ZV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CW1KZ258ZV');
+  </script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Trade-only API keys: the one setting that limits the damage", "inLanguage": "en", "mainEntityOfPage": "https://theweeklyaiedge.com/trade-only-api-keys.html", "datePublished": "2026-09-29", "dateModified": "2026-09-29", "author": {"@type": "Person", "name": "Daan", "url": "https://aibuildermarketplace.com/about/"}, "publisher": {"@type": "Organization", "name": "The Weekly AI Edge"}}</script>
+</head>
+<body>
+    <div class="top-bar">Cutting through the AI hype to find what actually works.</div>
+    <nav>
+        <a href="/" class="logo"><span class="logo-dot">●</span> The Weekly AI Edge</a>
+        <div class="nav-links"><a href="https://aibuildermarketplace.com" target="_blank" rel="nofollow noopener">Marketplace →</a></div>
+    </nav>
+    <div class="layout-wrapper">
+        <main>
+            <h1>Trade-only API keys: the one setting that limits the damage</h1>
+            <p>When I set up the connection between my bot and the exchange, one setting mattered more than any strategy tweak I made afterward: the API key permissions. On <a href="https://aibuildermarketplace.com/b2b/bitvavo-review/" rel="noopener" target="_blank">Bitvavo</a>, like most exchanges, you can generate a key that is allowed to place trades but has no permission to withdraw funds. I turned withdrawal permission off before the bot ever ran, and I have never turned it back on.</p><p>This is not a clever trick. It is a basic setting sitting in plain view on the key management page. Most people skip it because they are focused on getting the bot to work, not on what happens if something goes wrong later. I think that order of priorities is backwards.</p><h2>What a trade-only key actually protects against</h2><p>If the key that my bot uses ever leaks, through a misconfigured server, a copied script, or a mistake on my part, whoever gets hold of it can log in and place trades on my behalf. That is bad. But they cannot move my euros or my bitcoin to a wallet of their own, because the key itself has no withdrawal rights. The worst they can do is trade badly with my money while it stays inside my account. Annoying, possibly costly, but not the same as having my funds disappear entirely.</p><p>That distinction is the whole point of a trade-only key. It narrows the blast radius of a leak from total loss to a bounded, recoverable mess. I can revoke the key, generate a new one, and assess the damage. Nobody has walked away with my balance.</p><h2>What it does not protect against</h2><p>I want to be honest about the limits here, because it would be easy to read this and think a trade-only key makes the bot safe. It does not. A trade-only key protects against theft through a leaked credential. It does nothing to protect against a bad strategy, a market that moves against a position, or a bug in the code that buys or sells at the wrong moment. My bot can still lose money the ordinary way, by trading, with permission, exactly as it was told to. No permission setting fixes that. The setting is damage control for one specific failure mode, not a safety net for the whole system.</p><h2>Where the key lives, and rotating it</h2><p>The other half of this is just as unglamorous: the key should never sit inside your code. If you paste an API key directly into a script and that script ends up in a public repository, or even just gets shared with someone by accident, the key is exposed regardless of what permissions it has. I keep mine in environment secrets, the kind of storage <a href="https://aibuildermarketplace.com/b2b/replit-review/" rel="noopener" target="_blank">Replit</a> and most hosting platforms provide, separate from the code itself. The bot reads the key at runtime; it is never written into a file that gets copied around.</p><p>I also rotate the key periodically, meaning I generate a fresh one and retire the old one, rather than letting the same credential run indefinitely. Rotation limits how long a leaked key would even remain useful if it did get out, and it forces me to check, every time, that the new key is set up with the same restricted permissions as the last one. That habit is a bit tedious. It is also cheap insurance against carelessness.</p><div class="crosslink-box"><h3>The Edge Perspective</h3><p>I did not build this bot to prove I understood exchange security. I built it so the trading itself would stop taking up my evenings, running on <a href="https://account.bitvavo.com/create?a=68DCE39715" rel="sponsored noopener" target="_blank">Bitvavo</a> around the clock so I do not have to watch it. But taking that time back only makes sense if I am not trading a real risk of theft for a small risk of a bad trade. The trade-only key is the setting that keeps those two risks separate, so the automation gives me time back instead of quietly creating a new problem I have not noticed yet.</p></div><p>None of this removes the ordinary risk of trading. It only closes one specific door. The rest, the strategy, the code, the market itself, still needs the same caution it would need with any key that has full permissions.</p>
+            <p style="font-size:.85rem;color:#64748b;border:1px solid var(--border);border-radius:8px;padding:1rem;margin-top:2.5rem"><strong style="color:#94a3b8">Disclaimer:</strong> this article shares my personal experience and is not financial advice. Crypto and traded products are risky — prices can fall hard, and a system that worked in the past is no guarantee for the future. Only trade with money you can afford to lose.</p>
+        </main>
+        <aside class="sticky-sidebar">
+            <img src="https://www.google.com/s2/favicons?domain=bitvavo.com&sz=128" alt="Bitvavo logo" class="sidebar-logo">
+            <div class="sidebar-title">Bitvavo</div>
+            <a href="https://account.bitvavo.com/create?a=68DCE39715" target="_blank" class="btn-sidebar" rel="sponsored noopener">Open a Bitvavo account →</a>
+            <div style="font-size: 0.75rem; color: #475569;">Affiliate link: we may earn a commission if you sign up, at no extra cost to you. Last updated 2026-09-29</div>
+        </aside>
+    </div>
+
+    <div class="related-tools">
+        <h3>More guides</h3>
+        <div class="related-grid">
+            <a href="build-a-crypto-bot-without-coding.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Building a crypto trading bot without knowing how to code"><span class="related-name">Building a crypto trading bot without knowing how to code</span></a>
+            <a href="what-a-trading-bot-costs.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="What does it really cost to run your own trading bot"><span class="related-name">What does it really cost to run your own trading bot</span></a>
+            <a href="bitvavo-api-explained.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="The Bitvavo API explained for non-programmers"><span class="related-name">The Bitvavo API explained for non-programmers</span></a>
+            <a href="ai-automation-for-a-one-person-business.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="AI automation for the one-person business"><span class="related-name">AI automation for the one-person business</span></a>
+            <a href="vps-for-beginners.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="A VPS for beginners"><span class="related-name">A VPS for beginners</span></a>
+            <a href="emotion-the-investors-worst-enemy.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Emotion is every investor's worst enemy"><span class="related-name">Emotion is every investor's worst enemy</span></a>
+            <a href="build-or-hire-an-ai-agent.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Build or hire an AI agent"><span class="related-name">Build or hire an AI agent</span></a>
+            <a href="weekly-routine-for-systematic-trading.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="My weekly routine as a systematic trader"><span class="related-name">My weekly routine as a systematic trader</span></a>
+            <a href="buying-an-ai-agent.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Buying an AI agent"><span class="related-name">Buying an AI agent</span></a>
+            <a href="ai-p-seo.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="AI + programmatic SEO"><span class="related-name">AI + programmatic SEO</span></a>
+            <a href="algorithmic-trading.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="What is algorithmic trading"><span class="related-name">What is algorithmic trading</span></a>
+            <a href="emotion-free-crypto-trading.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Emotion-free crypto trading"><span class="related-name">Emotion-free crypto trading</span></a>
+            <a href="passive-income-from-crypto.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Passive income with crypto systems"><span class="related-name">Passive income with crypto systems</span></a>
+            <a href="prop-firm-bot.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Prop firm bot"><span class="related-name">Prop firm bot</span></a>
+        </div>
+    </div>
+
+    <div class="network-section">
+        <h3>The other sites</h3>
+        <div class="network-grid">
+            <a href="https://aibuildermarketplace.com" target="_blank" class="network-card" rel="nofollow noopener">
+                <span class="network-tag">THE DIRECTORY</span>
+                <div class="network-title">AI Builder Marketplace &rarr;</div>
+                <div class="network-desc">Reviews of AI and B2B software, with dated prices and sources.</div>
+            </a>
+            <a href="https://theweekly2pctedge.com" target="_blank" class="network-card" rel="nofollow noopener">
+                <span class="network-tag">SMALL GAINS</span>
+                <div class="network-title">The Weekly 2% Edge &rarr;</div>
+                <div class="network-desc">Research summaries of business tools, looking for small, repeatable gains.</div>
+            </a>
+            <a href="https://zerotouchsupport.com" target="_blank" class="network-card" rel="nofollow noopener">
+                <span class="network-tag">CUSTOMER SUPPORT</span>
+                <div class="network-title">ZeroTouchSupport &rarr;</div>
+                <div class="network-desc">Customer support and voice software, researched in depth.</div>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer-strip"><div class="footer-strip-left">© 2026 The Weekly AI Edge.</div><p style="font-size:.75rem;opacity:.6;text-align:center;margin:12px 0">Some links are affiliate links — we may earn a commission at no extra cost to you.</p>
+</footer>
+</body>
+</html>
