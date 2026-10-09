@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When an AI Coding Agent Gets Expensive | The Weekly AI Edge</title>
+    <style>
+        :root { --bg-dark: #050b14; --bg-card: #0b121f; --text-main: #f8fafc; --text-muted: #94a3b8; --accent: #38bdf8; --accent-hover: #0ea5e9; --border: #1e293b; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.7; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; }
+        .top-bar { background-color: #030712; color: #94a3b8; text-align: center; padding: 0.6rem 1rem; font-size: 0.85rem; border-bottom: 1px solid var(--border); font-weight: 500; }
+        nav { padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; background-color: rgba(5, 11, 20, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
+        .logo { font-size: 1.4rem; font-weight: 800; color: #ffffff; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
+        .logo-dot { color: var(--accent); font-size: 1.2rem; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text-main); }
+        .layout-wrapper { display: grid; grid-template-columns: 1fr 320px; gap: 4rem; max-width: 1100px; margin: 4rem auto; padding: 0 1.5rem; align-items: start; }
+        @media (max-width: 900px) { .layout-wrapper { grid-template-columns: 1fr; gap: 2rem; } .sticky-sidebar { position: static !important; } }
+        h1 { font-size: 2.5rem; margin-bottom: 2rem; color: #fff; line-height: 1.2; font-weight: 800; }
+        h2 { font-size: 1.6rem; margin: 2.5rem 0 1rem; color: #fff; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        p { margin-bottom: 1.25rem; color: var(--text-muted); font-size: 1.1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; color: var(--text-muted); font-size: 1.1rem; }
+        li { margin-bottom: 0.8rem; }
+        strong { color: var(--text-main); }
+        .crosslink-box { background-color: rgba(56, 189, 248, 0.05); border-left: 4px solid var(--accent); padding: 1.5rem; margin: 3rem 0; border-radius: 0 8px 8px 0; }
+        .sticky-sidebar { position: sticky; top: 120px; background-color: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
+        .sidebar-logo { width: 72px; height: 72px; border-radius: 12px; margin-bottom: 1rem; object-fit: contain; background: white; padding: 10px; border: 1px solid var(--border); }
+        .sidebar-title { font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem; font-weight: 800; }
+        .btn-sidebar { display: block; background-color: var(--accent); color: #0f172a; padding: 1rem; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.2s; margin-bottom: 1rem; font-size: 1.05rem; }
+        .btn-sidebar:hover { background-color: var(--accent-hover); }
+
+        /* Cross-linking CSS */
+        .related-tools { max-width: 1100px; margin: 2rem auto 4rem; padding: 3rem 1.5rem 0; border-top: 1px solid var(--border); }
+        .related-tools h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2rem; text-align: center; }
+        .related-grid { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        .related-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 2rem; text-align: center; text-decoration: none; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; min-width: 150px; }
+        .related-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .related-icon { width: 48px; height: 48px; border-radius: 10px; object-fit: contain; background: white; padding: 6px; }
+        .related-name { color: var(--text-main); font-size: 0.95rem; font-weight: 600; }
+
+        .network-section { max-width: 1100px; margin: 0 auto 6rem; padding: 0 1.5rem; }
+        .network-section h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2rem; text-align: center; }
+        .network-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .network-card { background: linear-gradient(145deg, #0b121f 0%, #0f172a 100%); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; text-decoration: none; transition: all 0.2s; display: block; }
+        .network-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .network-tag { font-family: monospace; font-size: 0.75rem; color: var(--accent); margin-bottom: 0.8rem; display: block; letter-spacing: 1px; }
+        .network-title { color: #fff; font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem; }
+        .network-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
+
+        .footer-strip { background-color: #030712; padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); font-size: 0.85rem; color: #64748b; }
+    </style>
+  <link rel="canonical" href="https://theweeklyaiedge.com/when-ai-agent-credits-get-expensive.html">
+  <meta name="description" content="Why effort-based billing changed how I use AI coding agents, and why I moved code changes from Replit's agent to Claude while keeping the bot on Replit.">
+  <meta property="og:title" content="When an AI Coding Agent Gets Expensive | The Weekly AI Edge">
+  <meta property="og:description" content="Why effort-based billing changed how I use AI coding agents, and why I moved code changes from Replit's agent to Claude while keeping the bot on Replit.">
+  <meta property="og:url" content="https://theweeklyaiedge.com/when-ai-agent-credits-get-expensive.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CW1KZ258ZV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CW1KZ258ZV');
+  </script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "When an AI Coding Agent Gets Expensive: What I Changed", "inLanguage": "en", "mainEntityOfPage": "https://theweeklyaiedge.com/when-ai-agent-credits-get-expensive.html", "datePublished": "2026-10-09", "dateModified": "2026-10-09", "author": {"@type": "Person", "name": "Daan", "url": "https://aibuildermarketplace.com/about/"}, "publisher": {"@type": "Organization", "name": "The Weekly AI Edge"}}</script>
+</head>
+<body>
+    <div class="top-bar">Cutting through the AI hype to find what actually works.</div>
+    <nav>
+        <a href="/" class="logo"><span class="logo-dot">●</span> The Weekly AI Edge</a>
+        <div class="nav-links"><a href="https://aibuildermarketplace.com" target="_blank" rel="nofollow noopener">Marketplace →</a></div>
+    </nav>
+    <div class="layout-wrapper">
+        <main>
+            <h1>When an AI Coding Agent Gets Expensive: What I Changed</h1>
+            <p>I built my crypto trading bot with Replit's AI agent, without a developer background. The agent wrote the code, set up the dashboard, and got the bot talking to the Bitvavo API. That part worked well. What I did not fully grasp until I was deep into it was how the billing for that kind of work actually adds up over time.</p><h2>How agent billing actually works</h2><p>An AI coding agent does not charge a flat monthly fee for unlimited changes. It charges for the effort it puts in: the time it spends reading your code, thinking through a fix, writing new code, and checking that the change did not break anything else. A small tweak, like renaming a variable, costs little. A bigger request, like adding a new alert type and changing how the dashboard displays it, costs more, because the agent has to understand more of the project before it touches anything.</p><p>This is effort-based billing, and it makes sense once you see it from the other side. The agent is not just typing, it is reasoning about your entire codebase every time you ask for something. The more context it needs to load and the more steps it has to take, the more it costs. For a bot that keeps growing with new features and small fixes, those costs are not one-off, they are ongoing.</p><h2>What changed when I moved to Claude</h2><p>I kept the bot running on Replit, but I moved the actual code changes to Claude. The bot still lives on Replit's infrastructure, runs there around the clock, and keeps sending me Telegram alerts. What changed is where I ask for new code or fixes. Claude writes the change, I paste it in, test it, and deploy it myself. I lost the convenience of the agent doing everything end to end inside the project. I gained more control over when and how much I spend on a given change.</p><p>The trade-off is real. An agent working directly inside your project can run tests, catch its own mistakes, and iterate without me copying code back and forth. Using a separate assistant for the coding and a different platform for hosting means I now carry more of that back-and-forth myself. For someone comfortable reading code, that is a fair exchange. For someone who wants a single tool to handle everything, it adds friction.</p><h2>When an agent is still the right tool</h2><p>I would still use an agent like Replit's for getting something off the ground. Going from nothing to a working bot with a dashboard, without writing code myself, is exactly the kind of job an agent is built for: broad, one-time, and worth paying for because the alternative is not building it at all. Where it gets expensive is in the maintenance phase, when you are making frequent, smaller changes to something that already exists. That is a different kind of task, and effort-based billing makes you feel the difference between the two.</p><p>If you are weighing whether to start a project with an AI coding agent, it is worth reading how the billing and workflow hold up in practice before you commit. I wrote up what I found in a <a href="https://aibuildermarketplace.com/b2b/replit-review/" rel="noopener" target="_blank">review of Replit</a>, and if you want to try it yourself, you can <a href="https://replit.com/signup?referral=dglhaket" rel="sponsored noopener" target="_blank">sign up here</a>.</p><div class="crosslink-box"><h3>The Edge Perspective</h3><p>What stays with me is that the goal was never to save money on software, it was to get hours back. Splitting the work between an agent for building and an assistant for maintaining is not a cleaner setup, it is a compromise I made because the costs of staying all-in on one tool started working against the reason I built the bot in the first place.</p></div><p>I run into the same question with the other projects on my desk: how much should run on autopilot, and how much should I still do by hand to keep costs predictable. If you want to see how I think about tools like this more broadly, I keep a running list of what I have tested at <a href="https://aibuildermarketplace.com" rel="noopener" target="_blank">aibuildermarketplace.com</a>.</p>
+            
+        </main>
+        <aside class="sticky-sidebar">
+            <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" alt="Replit logo" class="sidebar-logo">
+            <div class="sidebar-title">Replit</div>
+            <a href="https://replit.com/signup?referral=dglhaket" target="_blank" class="btn-sidebar" rel="sponsored noopener">Build your own system →</a>
+            <div style="font-size: 0.75rem; color: #475569;">Affiliate link: we may earn a commission if you sign up, at no extra cost to you. Last updated 2026-10-09</div>
+        </aside>
+    </div>
+
+    <div class="related-tools">
+        <h3>More guides</h3>
+        <div class="related-grid">
+            <a href="build-a-crypto-bot-without-coding.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Building a crypto trading bot without knowing how to code"><span class="related-name">Building a crypto trading bot without knowing how to code</span></a>
+            <a href="what-a-trading-bot-costs.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="What does it really cost to run your own trading bot"><span class="related-name">What does it really cost to run your own trading bot</span></a>
+            <a href="bitvavo-api-explained.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="The Bitvavo API explained for non-programmers"><span class="related-name">The Bitvavo API explained for non-programmers</span></a>
+            <a href="ai-automation-for-a-one-person-business.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="AI automation for the one-person business"><span class="related-name">AI automation for the one-person business</span></a>
+            <a href="vps-for-beginners.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="A VPS for beginners"><span class="related-name">A VPS for beginners</span></a>
+            <a href="emotion-the-investors-worst-enemy.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Emotion is every investor's worst enemy"><span class="related-name">Emotion is every investor's worst enemy</span></a>
+            <a href="build-or-hire-an-ai-agent.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Build or hire an AI agent"><span class="related-name">Build or hire an AI agent</span></a>
+            <a href="weekly-routine-for-systematic-trading.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="My weekly routine as a systematic trader"><span class="related-name">My weekly routine as a systematic trader</span></a>
+            <a href="buying-an-ai-agent.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Buying an AI agent"><span class="related-name">Buying an AI agent</span></a>
+            <a href="ai-p-seo.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="AI + programmatic SEO"><span class="related-name">AI + programmatic SEO</span></a>
+            <a href="algorithmic-trading.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="What is algorithmic trading"><span class="related-name">What is algorithmic trading</span></a>
+            <a href="emotion-free-crypto-trading.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Emotion-free crypto trading"><span class="related-name">Emotion-free crypto trading</span></a>
+            <a href="passive-income-from-crypto.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Passive income with crypto systems"><span class="related-name">Passive income with crypto systems</span></a>
+            <a href="prop-firm-bot.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Prop firm bot"><span class="related-name">Prop firm bot</span></a>
+            <a href="trade-only-api-keys.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Trade-only API keys"><span class="related-name">Trade-only API keys</span></a>
+            <a href="monitoring-a-trading-bot.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="How I Keep an Eye on a Bot That Trades While I Sleep"><span class="related-name">How I Keep an Eye on a Bot That Trades While I Sleep</span></a>
+        </div>
+    </div>
+
+    <div class="network-section">
+        <h3>The other sites</h3>
+        <div class="network-grid">
+            <a href="https://aibuildermarketplace.com" target="_blank" class="network-card" rel="nofollow noopener">
+                <span class="network-tag">THE DIRECTORY</span>
+                <div class="network-title">AI Builder Marketplace &rarr;</div>
+                <div class="network-desc">Reviews of AI and B2B software, with dated prices and sources.</div>
+            </a>
+            <a href="https://theweekly2pctedge.com" target="_blank" class="network-card" rel="nofollow noopener">
+                <span class="network-tag">SMALL GAINS</span>
+                <div class="network-title">The Weekly 2% Edge &rarr;</div>
+                <div class="network-desc">Research summaries of business tools, looking for small, repeatable gains.</div>
+            </a>
+            <a href="https://zerotouchsupport.com" target="_blank" class="network-card" rel="nofollow noopener">
+                <span class="network-tag">CUSTOMER SUPPORT</span>
+                <div class="network-title">ZeroTouchSupport &rarr;</div>
+                <div class="network-desc">Customer support and voice software, researched in depth.</div>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer-strip"><div class="footer-strip-left">© 2026 The Weekly AI Edge.</div><p style="font-size:.75rem;opacity:.6;text-align:center;margin:12px 0">Some links are affiliate links — we may earn a commission at no extra cost to you.</p>
+</footer>
+</body>
+</html>
