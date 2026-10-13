@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What My AI Agent on a VPS Does All Day | The Weekly AI Edge</title>
+    <style>
+        :root { --bg-dark: #050b14; --bg-card: #0b121f; --text-main: #f8fafc; --text-muted: #94a3b8; --accent: #38bdf8; --accent-hover: #0ea5e9; --border: #1e293b; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.7; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; }
+        .top-bar { background-color: #030712; color: #94a3b8; text-align: center; padding: 0.6rem 1rem; font-size: 0.85rem; border-bottom: 1px solid var(--border); font-weight: 500; }
+        nav { padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; background-color: rgba(5, 11, 20, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
+        .logo { font-size: 1.4rem; font-weight: 800; color: #ffffff; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
+        .logo-dot { color: var(--accent); font-size: 1.2rem; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text-main); }
+        .layout-wrapper { display: grid; grid-template-columns: 1fr 320px; gap: 4rem; max-width: 1100px; margin: 4rem auto; padding: 0 1.5rem; align-items: start; }
+        @media (max-width: 900px) { .layout-wrapper { grid-template-columns: 1fr; gap: 2rem; } .sticky-sidebar { position: static !important; } }
+        h1 { font-size: 2.5rem; margin-bottom: 2rem; color: #fff; line-height: 1.2; font-weight: 800; }
+        h2 { font-size: 1.6rem; margin: 2.5rem 0 1rem; color: #fff; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        p { margin-bottom: 1.25rem; color: var(--text-muted); font-size: 1.1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; color: var(--text-muted); font-size: 1.1rem; }
+        li { margin-bottom: 0.8rem; }
+        strong { color: var(--text-main); }
+        .crosslink-box { background-color: rgba(56, 189, 248, 0.05); border-left: 4px solid var(--accent); padding: 1.5rem; margin: 3rem 0; border-radius: 0 8px 8px 0; }
+        .sticky-sidebar { position: sticky; top: 120px; background-color: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
+        .sidebar-logo { width: 72px; height: 72px; border-radius: 12px; margin-bottom: 1rem; object-fit: contain; background: white; padding: 10px; border: 1px solid var(--border); }
+        .sidebar-title { font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem; font-weight: 800; }
+        .btn-sidebar { display: block; background-color: var(--accent); color: #0f172a; padding: 1rem; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.2s; margin-bottom: 1rem; font-size: 1.05rem; }
+        .btn-sidebar:hover { background-color: var(--accent-hover); }
+
+        /* Cross-linking CSS */
+        .related-tools { max-width: 1100px; margin: 2rem auto 4rem; padding: 3rem 1.5rem 0; border-top: 1px solid var(--border); }
+        .related-tools h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2rem; text-align: center; }
+        .related-grid { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        .related-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 2rem; text-align: center; text-decoration: none; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; min-width: 150px; }
+        .related-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .related-icon { width: 48px; height: 48px; border-radius: 10px; object-fit: contain; background: white; padding: 6px; }
+        .related-name { color: var(--text-main); font-size: 0.95rem; font-weight: 600; }
+
+        .network-section { max-width: 1100px; margin: 0 auto 6rem; padding: 0 1.5rem; }
+        .network-section h3 { font-size: 1.4rem; color: #fff; margin-bottom: 2rem; text-align: center; }
+        .network-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .network-card { background: linear-gradient(145deg, #0b121f 0%, #0f172a 100%); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; text-decoration: none; transition: all 0.2s; display: block; }
+        .network-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .network-tag { font-family: monospace; font-size: 0.75rem; color: var(--accent); margin-bottom: 0.8rem; display: block; letter-spacing: 1px; }
+        .network-title { color: #fff; font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem; }
+        .network-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
+
+        .footer-strip { background-color: #030712; padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); font-size: 0.85rem; color: #64748b; }
+    </style>
+  <link rel="canonical" href="https://theweeklyaiedge.com/what-an-ai-agent-on-a-vps-does-all-day.html">
+  <meta name="description" content="A look at Victor, the AI agent running on my Hostinger VPS: scheduled jobs, a publishing chain with checks, failure alerts, and why it still needs supervision.">
+  <meta property="og:title" content="What My AI Agent on a VPS Does All Day | The Weekly AI Edge">
+  <meta property="og:description" content="A look at Victor, the AI agent running on my Hostinger VPS: scheduled jobs, a publishing chain with checks, failure alerts, and why it still needs supervision.">
+  <meta property="og:url" content="https://theweeklyaiedge.com/what-an-ai-agent-on-a-vps-does-all-day.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CW1KZ258ZV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CW1KZ258ZV');
+  </script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "What My AI Agent on a VPS Does All Day", "inLanguage": "en", "mainEntityOfPage": "https://theweeklyaiedge.com/what-an-ai-agent-on-a-vps-does-all-day.html", "datePublished": "2026-10-13", "dateModified": "2026-10-13", "author": {"@type": "Person", "name": "Daan", "url": "https://aibuildermarketplace.com/about/"}, "publisher": {"@type": "Organization", "name": "The Weekly AI Edge"}}</script>
+</head>
+<body>
+    <div class="top-bar">Cutting through the AI hype to find what actually works.</div>
+    <nav>
+        <a href="/" class="logo"><span class="logo-dot">●</span> The Weekly AI Edge</a>
+        <div class="nav-links"><a href="https://aibuildermarketplace.com" target="_blank" rel="nofollow noopener">Marketplace →</a></div>
+    </nav>
+    <div class="layout-wrapper">
+        <main>
+            <h1>What My AI Agent on a VPS Does All Day</h1>
+            <p>People sometimes ask me what it actually means to run an AI agent. It sounds abstract until you describe the daily mechanics. I run an agent called Victor on a <a href="https://www.hostinger.com?REFERRALCODE=UZUDGLHAKW67" rel="sponsored noopener" target="_blank">Hostinger VPS</a>, and his job is to maintain my websites across 35 languages. That is not one big task, it is a long list of small, repeated ones. Here is what that actually looks like.</p><h2>Scheduled jobs, not constant thinking</h2><p>Victor does not sit there reasoning all day the way a person would. He runs on a schedule, like a series of cron jobs with an AI model behind them. At set times, a job wakes up, checks a list of pages, decides if anything needs building or updating, and does the work. Then it goes quiet until the next scheduled run. This is important to understand because it changes how you think about agents. They are not continuously alert. They act in bursts, on a timer, and the quality of what happens depends entirely on how well you have defined each job.</p><p>For my sites, the jobs are things like: check if a page exists for a given language and topic, check if the content is stale, check if a linked page still resolves, and rebuild or flag whatever fails those checks. Multiply that across 35 languages and a growing number of pages, and you get a workload that would be tedious for a person and is exactly the kind of repetitive thing I wanted off my plate.</p><h2>A publishing chain with checks before anything goes live</h2><p>The part I care most about is that nothing gets published blind. Victor's output goes through a chain of checks before it becomes a live page. That includes basic things like making sure the HTML is valid, that required fields are filled in, that the page is not a near-duplicate of something already published, and that it has not broken formatting rules I have set. Only after it clears those checks does it get published.</p><p>I built it this way because I do not trust any model, however capable, to self-certify its own output. The checks are separate steps, not the same process asking itself if it did a good job. That separation is the only thing standing between a glitch and something going live on one of my sites for weeks without me noticing.</p><h2>Alerts when something fails</h2><p>When a job fails a check, I get an alert. I do not watch a dashboard all day. I rely on the alert to tell me something needs attention, similar to how I use Telegram alerts for my trading bot. The alert does not fix anything, it just stops the bad output from going further and puts it in front of me. Most of the time the fix is small: a formatting rule that was too strict, a source page that moved, a language variant that needs a manual nudge. It is unglamorous work, but it is the work that keeps the system trustworthy.</p><div class="crosslink-box"><h3>The Edge Perspective</h3><p>What strikes me most about running Victor is how quiet failure can be. An agent does not announce that it is repeating a mistake. It will happily do the wrong thing the exact same way, run after run, until a check is specific enough to catch it. That is the part I did not fully appreciate before I built this: the checks are not a formality, they are the actual safety net. Without them, you do not have an autonomous system, you have an unsupervised one, and those are not the same thing.</p></div><p>If you are weighing whether to run something like this yourself, I would start with the infrastructure question honestly answered, which is what I tried to do in my <a href="https://aibuildermarketplace.com/b2b/hostinger-review/" rel="noopener" target="_blank">review of Hostinger</a>, and then spend more time than feels necessary designing the checks before you let anything publish on its own. You can also browse more tools like this on <a href="https://aibuildermarketplace.com" rel="noopener" target="_blank">aibuildermarketplace.com</a>, where I try to describe what things actually do rather than what they promise.</p>
+            
+        </main>
+        <aside class="sticky-sidebar">
+            <img src="https://www.google.com/s2/favicons?domain=hostinger.com&sz=128" alt="Hostinger VPS logo" class="sidebar-logo">
+            <div class="sidebar-title">Hostinger VPS</div>
+            <a href="https://www.hostinger.com?REFERRALCODE=UZUDGLHAKW67" target="_blank" class="btn-sidebar" rel="sponsored noopener">Start your own VPS →</a>
+            <div style="font-size: 0.75rem; color: #475569;">Affiliate link: we may earn a commission if you sign up, at no extra cost to you. Last updated 2026-10-13</div>
+        </aside>
+    </div>
+
+    <div class="related-tools">
+        <h3>More guides</h3>
+        <div class="related-grid">
+            <a href="build-a-crypto-bot-without-coding.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Building a crypto trading bot without knowing how to code"><span class="related-name">Building a crypto trading bot without knowing how to code</span></a>
+            <a href="what-a-trading-bot-costs.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="What does it really cost to run your own trading bot"><span class="related-name">What does it really cost to run your own trading bot</span></a>
+            <a href="bitvavo-api-explained.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="The Bitvavo API explained for non-programmers"><span class="related-name">The Bitvavo API explained for non-programmers</span></a>
+            <a href="ai-automation-for-a-one-person-business.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="AI automation for the one-person business"><span class="related-name">AI automation for the one-person business</span></a>
+            <a href="vps-for-beginners.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="A VPS for beginners"><span class="related-name">A VPS for beginners</span></a>
+            <a href="emotion-the-investors-worst-enemy.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Emotion is every investor's worst enemy"><span class="related-name">Emotion is every investor's worst enemy</span></a>
+            <a href="build-or-hire-an-ai-agent.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Build or hire an AI agent"><span class="related-name">Build or hire an AI agent</span></a>
+            <a href="weekly-routine-for-systematic-trading.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="My weekly routine as a systematic trader"><span class="related-name">My weekly routine as a systematic trader</span></a>
+            <a href="buying-an-ai-agent.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Buying an AI agent"><span class="related-name">Buying an AI agent</span></a>
+            <a href="ai-p-seo.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="AI + programmatic SEO"><span class="related-name">AI + programmatic SEO</span></a>
+            <a href="algorithmic-trading.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="What is algorithmic trading"><span class="related-name">What is algorithmic trading</span></a>
+            <a href="emotion-free-crypto-trading.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Emotion-free crypto trading"><span class="related-name">Emotion-free crypto trading</span></a>
+            <a href="passive-income-from-crypto.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Passive income with crypto systems"><span class="related-name">Passive income with crypto systems</span></a>
+            <a href="prop-firm-bot.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Prop firm bot"><span class="related-name">Prop firm bot</span></a>
+            <a href="trade-only-api-keys.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="Trade-only API keys"><span class="related-name">Trade-only API keys</span></a>
+            <a href="monitoring-a-trading-bot.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="How I Keep an Eye on a Bot That Trades While I Sleep"><span class="related-name">How I Keep an Eye on a Bot That Trades While I Sleep</span></a>
+            <a href="when-ai-agent-credits-get-expensive.html" class="related-card"><img src="https://www.google.com/s2/favicons?domain=theweeklyaiedge.com&sz=128" class="related-icon" alt="When an AI Coding Agent Gets Expensive"><span class="related-name">When an AI Coding Agent Gets Expensive</span></a>
+        </div>
+    </div>
+
+    <div class="network-section">
+        <h3>The other sites</h3>
+        <div class="network-grid">
+            <a href="https://aibuildermarketplace.com" target="_blank" class="network-card" rel="nofollow noopener">
+                <span class="network-tag">THE DIRECTORY</span>
+                <div class="network-title">AI Builder Marketplace &rarr;</div>
+                <div class="network-desc">Reviews of AI and B2B software, with dated prices and sources.</div>
+            </a>
+            <a href="https://theweekly2pctedge.com" target="_blank" class="network-card" rel="nofollow noopener">
+                <span class="network-tag">SMALL GAINS</span>
+                <div class="network-title">The Weekly 2% Edge &rarr;</div>
+                <div class="network-desc">Research summaries of business tools, looking for small, repeatable gains.</div>
+            </a>
+            <a href="https://zerotouchsupport.com" target="_blank" class="network-card" rel="nofollow noopener">
+                <span class="network-tag">CUSTOMER SUPPORT</span>
+                <div class="network-title">ZeroTouchSupport &rarr;</div>
+                <div class="network-desc">Customer support and voice software, researched in depth.</div>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer-strip"><div class="footer-strip-left">© 2026 The Weekly AI Edge.</div><p style="font-size:.75rem;opacity:.6;text-align:center;margin:12px 0">Some links are affiliate links — we may earn a commission at no extra cost to you.</p>
+</footer>
+</body>
+</html>
